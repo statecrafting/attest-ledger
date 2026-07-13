@@ -1,0 +1,77 @@
+name: release
+
+# Tag-gated crates.io release. Push a tag `vX.Y.Z` (matching the workspace
+# version) to publish all three crates in dependency order.
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  publish-crates:
+    name: publish to crates.io
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: rustup show
+
+      - name: Verify tag matches workspace version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          VER="$(grep -m1 '^version = ' Cargo.toml | tr -d '" ' | cut -d= -f2)"
+          if [ "$TAG" != "$VER" ]; then
+            echo "::error::release tag ${GITHUB_REF_NAME} (=${TAG}) does not match workspace version ${VER}"
+            exit 1
+          fi
+          echo "tag and version agree on ${VER}"
+
+      # The three crates form a dependency chain: types <- core <- cli. crates.io
+      # needs each publish visible before the next resolves its version dep, so
+      # publish in order and wait for availability between steps. Each publish is
+      # idempotent: a re-run after a partial release skips crates already up.
+      - name: Publish attest-ledger-types
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: .github/publish-crate.sh attest-ledger-types
+
+      - name: Wait for attest-ledger-types to be resolvable
+        run: |
+          for i in $(seq 1 30); do
+            if cargo search attest-ledger-types | grep -q '^attest-ledger-types = "0'; then
+              echo "attest-ledger-types is on the index"; break
+            fi
+            echo "waiting for index propagation ($i)"; sleep 10
+          done
+
+      - name: Publish attest-ledger-core
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: .github/publish-crate.sh attest-ledger-core
+
+      - name: Wait for attest-ledger-core to be resolvable
+        run: |
+          for i in $(seq 1 30); do
+            if cargo search attest-ledger-core | grep -q '^attest-ledger-core = "0'; then
+              echo "attest-ledger-core is on the index"; break
+            fi
+            echo "waiting for index propagation ($i)"; sleep 10
+          done
+
+      - name: Publish attest-ledger-cli
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: .github/publish-crate.sh attest-ledger-cli
+
+  github-release:
+    name: create GitHub Release
+    needs: publish-crates
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true

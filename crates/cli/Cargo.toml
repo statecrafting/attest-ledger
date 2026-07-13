@@ -1,0 +1,37 @@
+# attest-ledger-cli: the independent verifier binary `attest-ledger`.
+#
+# Does the file I/O at the edge (reads JSONL chains and anchor JSON from disk)
+# and calls attest-ledger-core to verify. The verifier shares no state with any
+# writer: an auditor runs it against records they did not produce.
+
+[package]
+name = "attest-ledger-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+description = "Independent command-line verifier for attest-ledger record chains and audit segments."
+keywords = ["ledger", "audit", "verify", "cli", "tamper-evident"]
+categories = ["command-line-utilities", "cryptography"]
+readme = "../../README.md"
+include = ["src/**", "Cargo.toml"]
+
+[[bin]]
+name = "attest-ledger"
+path = "src/main.rs"
+
+[dependencies]
+attest-ledger-core = { workspace = true }
+attest-ledger-types = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+clap = { workspace = true }
+
+[lints]
+workspace = true
+
+[package.metadata.attest-ledger]
+spec = "000-attest-ledger-bootstrap"

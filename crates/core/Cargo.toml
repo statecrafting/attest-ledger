@@ -1,0 +1,43 @@
+# attest-ledger-core: the hashing, signing, and verification engine for the
+# tamper-evident record chain and audit-segment chain.
+#
+# Storage-agnostic by design: it produces and verifies hash-linked records but
+# owns no persistence. Writing records to JSONL, Postgres, or anywhere else is
+# the consumer's concern (the CLI does file I/O at the edge; OAP keeps its own
+# rotating file writer; chancery writes append-only Postgres rows).
+#
+# Extracted (relicensed Apache-2.0 by the sole copyright holder) from the Open
+# Agentic Platform's crates/policy-kernel (proof_chain.rs + the pure subset of
+# audit.rs). See NOTICE.
+
+[package]
+name = "attest-ledger-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+description = "Hashing, Ed25519 anchor signing, and independent verification for the attest-ledger tamper-evident record chain and audit-segment chain."
+keywords = ["ledger", "audit", "tamper-evident", "ed25519", "hash-chain"]
+categories = ["cryptography", "data-structures"]
+readme = "../../README.md"
+include = ["src/**", "Cargo.toml"]
+
+[dependencies]
+attest-ledger-types = { workspace = true }
+canonical-keysort-json = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sha2 = { workspace = true }
+hex = { workspace = true }
+ed25519-dalek = { workspace = true }
+base64 = { workspace = true }
+getrandom = { workspace = true }
+
+[lints]
+workspace = true
+
+[package.metadata.attest-ledger]
+spec = "000-attest-ledger-bootstrap"

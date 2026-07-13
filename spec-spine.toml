@@ -1,0 +1,44 @@
+# spec-spine governing the attest-ledger repository (dogfood).
+#
+# attest-ledger vends a three-crate tamper-evident ledger; its own specs/ corpus
+# is governed by the published spec-spine library, pinned as a dev dependency
+# and invoked as `npx --no-install spec-spine {compile,lint,index check,couple}`.
+# This is the same dogfooding pattern spec-spine, OAP, tenant-emit, tenant-tail,
+# and canonical-keysort-json all follow. spec-spine reads its config from
+# `spec-spine.toml` at the repo root; only the metadata namespace and layout
+# differ from the built-in defaults.
+
+[manifest]
+# Each crate carries `[package.metadata.attest-ledger].spec = "NNN-slug"`.
+metadata_namespace = "attest-ledger"
+
+[domains]
+allowed = []        # disabled: this repo's specs do not declare a `domain`
+
+[kind]
+allowed = []        # disabled: `kind` is free-text (symmetric with [domains])
+
+[layout]
+specs_dir     = "specs"
+derived_dir   = ".derived"
+standards_dir = "standards/spec"
+schemas_dir   = "standards/schemas"
+cargo_workspace = "Cargo.toml"
+npm_workspaces = ["package.json", "pnpm-workspace.yaml"]
+standalone_rust_workspaces = []
+standalone_npm_packages    = []
+
+[index]
+extra_hashed_inputs = ["standards/**", ".github/workflows/**"]
+resolver_exclusions = ["target", "node_modules", ".derived", "dist", "build"]
+
+[branding]
+compiler_id = "spec-spine"
+indexer_id  = "spec-spine"
+
+[coupling]
+bypass_prefixes = ["**/README.md"]
+waiver_keyword = "Spec-Drift-Waiver:"
+
+[frontmatter]
+extra_known_keys = []

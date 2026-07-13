@@ -1,0 +1,49 @@
+# Enforce LF line endings for all text files in this repository.
+# This prevents "LF will be replaced by CRLF" warnings on Windows
+# and ensures consistent line endings across all platforms.
+
+# Default: normalize all text files to LF on commit
+* text=auto eol=lf
+
+# --- Source code ---
+*.rs        text eol=lf
+*.ts        text eol=lf
+*.js        text eol=lf
+
+# --- Config / markup ---
+*.json      text eol=lf
+*.jsonl     text eol=lf
+*.toml      text eol=lf
+*.yaml      text eol=lf
+*.yml       text eol=lf
+
+# --- Docs ---
+*.md        text eol=lf
+*.txt       text eol=lf
+
+# --- Shell / config ---
+*.sh        text eol=lf
+.gitignore  text eol=lf
+.gitattributes text eol=lf
+
+# --- Binary: never touch line endings ---
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary
+*.pdf       binary
+*.zip       binary
+*.gz        binary
+*.tar       binary
+
+# --- Derived-artifact merge driver (forward-looking) ---
+# When this repo's spec-spine self-governance lands (committed .derived/ shards
+# plus .githooks/, deferred to a later session), two branches that both
+# regenerated the per-spec / per-package JSON shards would conflict textually.
+# The `attest-ledger-derived-regen` driver regenerates them from the merged
+# tree instead of leaving conflict markers. Opt-in: register per-clone with
+# `./.githooks/enable-merge-driver.sh`. Unregistered (the case today, before
+# self-governance lands), git falls back to the default text merge; no behavior
+# change. build-meta.json is gitignored, so the glob never touches it.
+.derived/**/*.json merge=attest-ledger-derived-regen

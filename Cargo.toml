@@ -1,0 +1,55 @@
+# attest-ledger: a tamper-evident record ledger (append-only, hash-linked,
+# Ed25519-signed) with an independent verifier. The run-time counterpart to a
+# build-time registry: same primitive (typed, hash-verified, append-only),
+# different clock.
+#
+# Three crates:
+#   attest-ledger-types  the on-the-wire shapes + error taxonomy (serde only)
+#   attest-ledger-core   hashing, signing, and verification
+#   attest-ledger-cli    the `attest-ledger` verifier binary
+#
+# Extracted (relicensed Apache-2.0 by the sole copyright holder) from the Open
+# Agentic Platform's crates/policy-kernel. See NOTICE.
+#
+# Governed by this repo's OWN specs/ corpus, compiled by the pinned spec-spine
+# library (the dogfooding pattern spec-spine, tenant-emit, tenant-tail, and
+# canonical-keysort-json all follow).
+
+[workspace]
+resolver = "2"
+members = ["crates/types", "crates/core", "crates/cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "Apache-2.0"
+repository = "https://github.com/stagecraft-ing/attest-ledger"
+homepage = "https://github.com/stagecraft-ing/attest-ledger"
+authors = ["The attest-ledger Authors"]
+
+[workspace.dependencies]
+# Internal (path for local build, version for `cargo publish`).
+attest-ledger-types = { version = "0.1.0", path = "crates/types" }
+attest-ledger-core = { version = "0.1.0", path = "crates/core" }
+
+# The leaf: deterministic key-sorted JSON so record hashes are reproducible.
+canonical-keysort-json = "0.1"
+
+# Serde stack.
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Crypto / hashing (versions pinned to match OAP's policy-kernel, so the
+# extracted proof-chain code compiles byte-identically).
+sha2 = "0.10"
+hex = "0.4"
+ed25519-dalek = "3"
+base64 = "0.22"
+getrandom = "0.4.2"
+
+# CLI.
+clap = { version = "4", features = ["derive"] }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"

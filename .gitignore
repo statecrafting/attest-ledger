@@ -1,0 +1,25 @@
+# Secrets: never commit local publishing tokens (crates.io / npm / pypi).
+# The release pipeline reads these from GitHub Actions secrets, not the repo.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Rust build output
+/target
+**/*.rs.bk
+
+# NOTE: .derived/ (compiler/indexer output) is intentionally NOT ignored once
+# this repo's spec-spine self-governance lands; it is committed so the coupling
+# gate and content-hash staleness check can compare the committed registry/index
+# against current inputs. Determinism makes this sane. The one exception:
+# build-meta.json carries a wall-clock `builtAt` (the sole non-deterministic
+# artifact), so it would churn on every compile.
+.derived/**/build-meta.json
+
+# node (spec-spine is pinned as an npx dev tool; no committed node_modules)
+node_modules/
+
+# OS / editor cruft
+.DS_Store

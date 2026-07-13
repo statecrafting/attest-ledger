@@ -1,0 +1,33 @@
+attest-ledger
+Copyright 2026 Bartek Kus
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+--------------------------------------------------------------------------------
+Relicensed source (authorized)
+--------------------------------------------------------------------------------
+
+The record-chain and audit-segment code and their tests were extracted from the
+Open Agentic Platform (OAP), `crates/policy-kernel` (`proof_chain.rs` and the
+pure subset of `audit.rs`), where they carry an SPDX header reading
+`AGPL-3.0-or-later`. Relicensing this extracted source to Apache-2.0 is the
+prerogative of the sole copyright holder (Bartek Kus) and is an explicit,
+authorized act.
+
+The extraction is domain-neutral by construction: the chain, signing, and verify
+mechanics hold no Open Agentic Platform domain logic. The OAP-specific fields
+that were baked into the original proof record (`policy_bundle_hash`,
+`rule_ids`, `decision`, `privilege_level`) are not part of this library; they
+move into the opaque `payload` of consumers that want them. The OAP-specific
+file writer and rotation logic (an OAP persistence choice) were not extracted.
+
+--------------------------------------------------------------------------------
+Dependencies
+--------------------------------------------------------------------------------
+
+Reproducible record hashing rests on `canonical-keysort-json`, itself extracted
+and relicensed Apache-2.0 from OAP's `crates/canonical-json`.
+
+A forthcoming OAP extraction spec (analogous to spec 219 for tenant-tail)
+formalizes the vend; the interim record is
+`chancery/docs/preliminary/00-extraction-overview.md` and `01-attest-ledger.md`.

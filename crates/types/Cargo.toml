@@ -1,0 +1,33 @@
+# attest-ledger-types: the on-the-wire shapes for the tamper-evident record
+# chain (LedgerRecord, ChainAnchor, the genesis attestation taxonomy) and the
+# verification error enums. Serde-only: depending on this crate alone gets a
+# consumer the record and anchor structs without the crypto stack in
+# attest-ledger-core.
+#
+# Extracted (relicensed Apache-2.0 by the sole copyright holder) from the Open
+# Agentic Platform's crates/policy-kernel (proof_chain.rs). See NOTICE.
+
+[package]
+name = "attest-ledger-types"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+description = "Data types for attest-ledger: the tamper-evident LedgerRecord envelope, signed ChainAnchor, and verification error taxonomy."
+keywords = ["ledger", "audit", "tamper-evident", "hash-chain", "types"]
+categories = ["data-structures", "cryptography"]
+readme = "../../README.md"
+include = ["src/**", "Cargo.toml"]
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[lints]
+workspace = true
+
+[package.metadata.attest-ledger]
+spec = "000-attest-ledger-bootstrap"

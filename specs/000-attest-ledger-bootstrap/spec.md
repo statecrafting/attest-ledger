@@ -37,7 +37,7 @@ references:
 
 ## 1. Purpose
 
-attest-ledger is the run-time tamper-evidence primitive of the `stagecraft-ing`
+attest-ledger is the run-time tamper-evidence primitive of the `statecrafting`
 reusable-primitive family. It guarantees that a sequence of records is
 append-only and hash-linked, so any edit, deletion, reorder, or splice is
 detectable, and that the chain is pinned to a signing key an external verifier

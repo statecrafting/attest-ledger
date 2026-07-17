@@ -29,4 +29,4 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   opaque `payload`; the OAP file writer / rotation is not extracted (storage is
   the consumer's concern). See `NOTICE`.
 
-[0.1.0]: https://github.com/stagecraft-ing/attest-ledger/releases/tag/v0.1.0
+[0.1.0]: https://github.com/statecrafting/attest-ledger/releases/tag/v0.1.0

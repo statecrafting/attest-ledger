@@ -24,8 +24,8 @@ version = "0.1.0"
 edition = "2024"
 rust-version = "1.85"
 license = "Apache-2.0"
-repository = "https://github.com/stagecraft-ing/attest-ledger"
-homepage = "https://github.com/stagecraft-ing/attest-ledger"
+repository = "https://github.com/statecrafting/attest-ledger"
+homepage = "https://github.com/statecrafting/attest-ledger"
 authors = ["The attest-ledger Authors"]
 
 [workspace.dependencies]

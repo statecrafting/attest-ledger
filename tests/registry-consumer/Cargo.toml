@@ -1,0 +1,12 @@
+[package]
+name = "attest-ledger-registry-consumer"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+attest-ledger-types = "=0.1.1"
+attest-ledger-core = "=0.1.1"
+serde_json = "1"

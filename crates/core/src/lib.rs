@@ -31,19 +31,34 @@
 //! This crate produces and verifies records; it owns no persistence. Writing
 //! records to JSONL files, rotating them, or committing them to a database is
 //! the consumer's concern.
+//!
+//! # Completeness and freshness
+//!
+//! The original verifiers prove integrity only for the sequence presented.
+//! [`verify_chain_with_head`] and [`verify_audit_chain_with_head`] additionally
+//! require exact agreement with a [`HeadCommitmentV1`] obtained through a
+//! separately trusted channel. A commitment stored and rolled back with the
+//! ledger is not a freshness authority.
 
 use sha2::{Digest, Sha256};
 
 mod audit;
+mod head_commitment;
 mod record_chain;
 mod signing;
 
 pub use attest_ledger_types::{
-    AuditVerifyError, ChainAnchor, GenesisAttestation, GenesisAttestationKind, LedgerRecord,
-    VerifyError,
+    AuditHeadVerifyError, AuditVerifyError, ChainAnchor, GenesisAttestation,
+    GenesisAttestationKind, HEAD_COMMITMENT_SCHEMA_V1, HeadCommitmentKind, HeadCommitmentV1,
+    HeadVerifyError, LedgerRecord, VerifyError,
 };
 
 pub use audit::{AuditChain, verify_audit_chain};
+pub use head_commitment::{
+    build_audit_head_commitment, build_record_head_commitment, chain_anchor_identity,
+    head_commitment_canonical_bytes, head_commitment_digest, verify_audit_chain_with_head,
+    verify_chain_with_head,
+};
 pub use record_chain::{
     DEFAULT_MAX_RECORD_BYTES, RecordChain, compute_record_hash, record_payload_bytes, verify_chain,
     verify_chain_with_anchor,

@@ -6,7 +6,9 @@ counterpart to a build-time registry: the same primitive (typed, hash-verified,
 append-only), a different clock.
 
 ```rust
-use attest_ledger_core::{RecordChain, verify_chain_with_anchor};
+use attest_ledger_core::{
+    RecordChain, build_record_head_commitment, verify_chain_with_head,
+};
 use serde_json::json;
 
 // Root the chain at some pinned hash (a bundle hash, a context hash, anything).
@@ -22,9 +24,12 @@ let anchor = chain.build_anchor("chain-001".into(), "2026-07-13T00:00:00Z".into(
 let r0 = chain.append("r0".into(), "2026-07-13T00:00:01Z".into(),
     json!({ "decision": "allow", "rule_ids": ["R-1"] }));
 
-// Verify offline. The verifier recomputes every hash and checks the anchor
-// signature first; it shares no state with the writer.
-verify_chain_with_anchor(&anchor, &[r0]).unwrap();
+// A commitment becomes trusted only after it is carried through a channel
+// outside the ledger's rollback domain.
+let head = build_record_head_commitment(&anchor, &[r0.clone()]).unwrap();
+
+// Verify offline against that independently trusted expected head.
+verify_chain_with_head(&anchor, &[r0], &head).unwrap();
 ```
 
 ## The two chains
@@ -32,9 +37,14 @@ verify_chain_with_anchor(&anchor, &[r0]).unwrap();
 - **Record chain** (`RecordChain` + `verify_chain` / `verify_chain_with_anchor`):
   individual `LedgerRecord`s, each hashing the canonical JSON of the prior
   record's hash into its own. A signed `ChainAnchor` pins the chain to a root.
+  These APIs verify the integrity of the presented sequence. Add
+  `HeadCommitmentV1` plus `verify_chain_with_head` to prove tail completeness
+  against an independently trusted expected head.
 - **Audit-segment chain** (`AuditChain` + `verify_audit_chain`): a
   content-agnostic, hash-chained segment log for higher-volume append, closed
   with a size-anchoring segment head, verified with cross-segment continuity.
+  Open-segment verification is integrity-only. Use
+  `verify_audit_chain_with_head` to require a complete closed segment.
 
 ## Design commitments
 
@@ -55,6 +65,11 @@ verify_chain_with_anchor(&anchor, &[r0]).unwrap();
   persistence. Writing records to JSONL files, rotating them, or committing them
   to a database is the consumer's concern. The `attest-ledger` CLI does the file
   I/O at the edge.
+- **Freshness is external.** A trusted head binds schema, chain, signed anchor,
+  expected count, and terminal hash. The caller must obtain it through a
+  separately trusted channel. A head stored and rolled back with the ledger is
+  not a freshness authority, so attest-ledger does not claim rollback
+  resistance for that arrangement.
 
 ## Crates
 
@@ -68,14 +83,21 @@ verify_chain_with_anchor(&anchor, &[r0]).unwrap();
 
 ```console
 $ attest-ledger verify chain.jsonl --anchor anchor.json
-chain VERIFIED: 12 record(s), anchor signature valid
+chain VERIFIED: 12 record(s), anchor signature valid, integrity only (no trusted head supplied)
+
+$ attest-ledger verify chain.jsonl --anchor anchor.json --head head.json --require-head
+chain VERIFIED: 12 record(s), anchor signature valid, trusted head matched
 
 $ attest-ledger verify-audit segment.jsonl --genesis sha256:abc...
-audit segment VERIFIED: 8 record(s)
+audit segment VERIFIED: 8 record(s), integrity only (no trusted head supplied)
+
+$ attest-ledger verify-audit segment.jsonl --head audit-head.json --require-head
+audit segment VERIFIED: 8 record(s), trusted head matched
 ```
 
 Exit 0 on a clean verify, exit 1 with a specific diagnostic naming the first
-broken record on tamper.
+broken record or head mismatch. `--require-head` exits 1 rather than silently
+falling back when its trusted head input is absent.
 
 ## Ecosystem
 

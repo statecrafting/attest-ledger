@@ -118,12 +118,15 @@ impl RecordChain {
     }
 }
 
-/// Verify chain integrity: non-empty, every `record_hash` recomputes, and every
-/// record binds its predecessor.
+/// Verify the integrity of the presented chain: non-empty, every `record_hash`
+/// recomputes, and every record binds its predecessor.
 ///
 /// The genesis record's `previous_record_hash` is accepted as the declared
 /// anchor link (there is no external root to check it against here); use
 /// [`verify_chain_with_anchor`] to check it against a signed anchor.
+/// Neither function proves the presented sequence is latest or complete. Use
+/// [`crate::verify_chain_with_head`] with an independently trusted expected
+/// head when tail completeness is required.
 pub fn verify_chain(records: &[LedgerRecord]) -> Result<(), VerifyError> {
     if records.is_empty() {
         return Err(VerifyError::EmptyChain);
@@ -140,11 +143,14 @@ pub fn verify_chain(records: &[LedgerRecord]) -> Result<(), VerifyError> {
 }
 
 /// Verify the anchor signature FIRST, then that the genesis record binds the
-/// anchor, then chain integrity.
+/// anchor, then the integrity of the presented chain.
 ///
 /// The anchor is the authoritative external trust root: a chain rooted in an
 /// unsigned or forged anchor is untrusted regardless of how well its per-record
 /// hashes line up, so the signature check gates everything.
+/// This does not prove the sequence is latest or complete; use
+/// [`crate::verify_chain_with_head`] with an independently trusted expected
+/// head for that property.
 pub fn verify_chain_with_anchor(
     anchor: &ChainAnchor,
     records: &[LedgerRecord],

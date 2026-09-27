@@ -108,7 +108,7 @@ impl AuditChain {
     }
 }
 
-/// Walk an audit segment chain.
+/// Walk the presented audit segment chain for integrity only.
 ///
 /// Recomputes each record's hash, checks each `previous_record_hash` binds its
 /// predecessor, and, if the final record is a segment head, checks its
@@ -117,6 +117,11 @@ impl AuditChain {
 /// (cross-segment continuity); otherwise the first record's predecessor link is
 /// the segment boundary and is not failed. Shares no state with the writer and
 /// runs offline.
+///
+/// This accepts an intact open segment and does not prove that the trailing
+/// head is present or latest. Use [`crate::verify_audit_chain_with_head`] with
+/// an independently trusted expected head to require closed-segment
+/// completeness.
 pub fn verify_audit_chain(
     records: &[Value],
     expected_genesis: Option<&str>,

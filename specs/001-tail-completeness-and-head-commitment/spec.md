@@ -1,11 +1,11 @@
 ---
 id: "001-tail-completeness-and-head-commitment"
 title: "Tail completeness and trusted head commitments"
-status: draft
+status: approved
 created: "2026-09-26"
 authors: ["attest-ledger"]
 kind: tooling
-implementation: pending
+implementation: complete
 risk: high
 summary: >
   Amend spec 000's unqualified deletion claim. Existing verifiers prove the
@@ -48,6 +48,10 @@ references:
 ---
 
 # 001: Tail completeness and trusted head commitments
+
+Ratified by Bart on 2026-09-26. The same owner instruction authorized the
+separate implementation, review, merge, and governed public 0.1.1 release
+sequence after all declared gates pass.
 
 ## 1. Purpose and amendment
 

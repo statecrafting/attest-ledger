@@ -16,6 +16,13 @@
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
+mod head_commitment;
+
+pub use head_commitment::{
+    AuditHeadVerifyError, HEAD_COMMITMENT_SCHEMA_V1, HeadCommitmentKind, HeadCommitmentV1,
+    HeadVerifyError,
+};
+
 /// One append-only ledger record.
 ///
 /// `record_hash` is the SHA-256 (carrying a `sha256:` prefix) over the

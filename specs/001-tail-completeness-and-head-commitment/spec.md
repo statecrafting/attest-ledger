@@ -456,15 +456,27 @@ cargo package --locked --list -p attest-ledger-types
 cargo package --locked --list -p attest-ledger-core
 cargo package --locked --list -p attest-ledger-cli
 cargo package --locked --no-verify -p attest-ledger-types
+```
+
+The lists must contain the public source, README, and manifest with Apache-2.0
+license metadata required by each package, and must not contain tests,
+credentials, worktree state, or session artifacts. Inspect the manifests and
+require internal dependencies `attest-ledger-types = "0.1.1"` and
+`attest-ledger-core = "0.1.1"` where applicable.
+
+Before publication, Cargo cannot construct the core archive because its
+required types 0.1.1 dependency is not yet on the registry, and cannot
+construct the CLI archive before core 0.1.1 is there. That dependency-order
+refusal is expected and must not be bypassed with a path, Git, patch, or fake
+registry source. The release workflow's `cargo publish --locked` constructs
+and verifies each archive only after its predecessor is registry-resolvable.
+After all three packages are visible, run these exact clean local construction
+checks as release evidence:
+
+```sh
 cargo package --locked --no-verify -p attest-ledger-core
 cargo package --locked --no-verify -p attest-ledger-cli
 ```
-
-The lists must contain the public source, README, license and manifest required
-by each package, and must not contain tests, credentials, worktree state, or
-session artifacts. Inspect each generated manifest and require internal
-dependencies `attest-ledger-types = "0.1.1"` and
-`attest-ledger-core = "0.1.1"` where applicable.
 
 Check release workflow and tag-to-version agreement without publishing:
 
@@ -542,7 +554,9 @@ This is consumer qualification, not merely package publication.
 The target is an additive 0.1.1 release of `attest-ledger-types`,
 `attest-ledger-core`, and `attest-ledger-cli`. The release sequence is fixed:
 
-1. Bart ratifies this spec in a separate owner action.
+1. Bart ratifies this spec in a separate owner action. Bart did so on
+   2026-09-26 and separately ratified the dependency-ordered package-check
+   correction in section 8.2.
 2. A later implementation unit changes only the claimed units, sets the
    workspace and internal crate dependency versions to 0.1.1, and passes
    section 8 acceptance.
@@ -572,7 +586,7 @@ protection when ledger data and its local accounting or commitment are rolled
 back together. Rahi needs its own ratified storage contract before it can
 adopt and operate an external head authority.
 
-This draft grants no authority to implement, approve, merge, tag, publish, or
-release. Bart's ratification is the next action. The recorded public-release
-authority applies only after ratification, implementation, acceptance, review,
-repository gates, and CI have all passed.
+This approved contract and Bart's follow-up instruction authorize the
+implementation, review, merge, and governed public release sequence. The
+recorded public-release authority applies only after implementation,
+acceptance, review, repository gates, and CI have all passed.

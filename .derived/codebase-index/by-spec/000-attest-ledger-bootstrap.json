@@ -1,0 +1,228 @@
+{
+  "mapping": {
+    "implementingPaths": [
+      {
+        "path": "Cargo.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "NOTICE",
+        "source": "spec-edge"
+      },
+      {
+        "path": "README.md",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/cli",
+        "source": "manifest-metadata"
+      },
+      {
+        "path": "crates/cli/Cargo.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/cli/src/main.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core",
+        "source": "manifest-metadata"
+      },
+      {
+        "path": "crates/core/Cargo.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/src/audit.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/src/lib.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/src/record_chain.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/src/signing.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/types",
+        "source": "manifest-metadata"
+      },
+      {
+        "path": "crates/types/Cargo.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/types/src/lib.rs",
+        "source": "spec-edge"
+      }
+    ],
+    "resolvedUnits": [
+      {
+        "locations": [
+          {
+            "file": "Cargo.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "Cargo.toml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/cli/Cargo.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/cli/Cargo.toml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/cli/src/main.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/cli/src/main.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/Cargo.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/Cargo.toml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/src/audit.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/audit.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/src/lib.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/lib.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/src/record_chain.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/record_chain.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/src/signing.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/signing.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/types/Cargo.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/types/Cargo.toml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/types/src/lib.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/types/src/lib.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "NOTICE"
+          }
+        ],
+        "ownership": false,
+        "sourceField": "references",
+        "unit": {
+          "kind": "file",
+          "path": "NOTICE"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "README.md"
+          }
+        ],
+        "ownership": false,
+        "sourceField": "references",
+        "unit": {
+          "kind": "file",
+          "path": "README.md"
+        }
+      }
+    ],
+    "specId": "000-attest-ledger-bootstrap",
+    "specStatus": "approved"
+  },
+  "schemaVersion": "1.1.0",
+  "shardHash": "78aa9be8da3f395da1963846686a0324837eed04e7ad1329de5344700e20282e"
+}

@@ -1,0 +1,205 @@
+{
+  "record": {
+    "amends": [
+      "000-attest-ledger-bootstrap"
+    ],
+    "amendsSections": [
+      "1-purpose"
+    ],
+    "authors": [
+      "attest-ledger"
+    ],
+    "created": "2026-09-26",
+    "dependsOn": [
+      "000-attest-ledger-bootstrap"
+    ],
+    "establishes": [
+      {
+        "kind": "file",
+        "path": "crates/types/src/head_commitment.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/core/src/head_commitment.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/core/tests/head_commitment.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/cli/tests/head_commitment_cli.rs"
+      },
+      {
+        "kind": "file",
+        "path": "tests/registry-consumer/Cargo.toml"
+      },
+      {
+        "kind": "file",
+        "path": "tests/registry-consumer/src/main.rs"
+      }
+    ],
+    "extends": [
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "anchor": "workspace.package",
+          "file": "Cargo.toml",
+          "kind": "section"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "anchor": "workspace.dependencies",
+          "file": "Cargo.toml",
+          "kind": "section"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "Cargo.lock"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/types/Cargo.toml"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/types/src/lib.rs"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/Cargo.toml"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/lib.rs"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/record_chain.rs"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/audit.rs"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/cli/Cargo.toml"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/cli/src/main.rs"
+        }
+      },
+      {
+        "nature": "corrective",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "README.md"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "CHANGELOG.md"
+        }
+      }
+    ],
+    "id": "001-tail-completeness-and-head-commitment",
+    "implementation": "complete",
+    "kind": "tooling",
+    "references": [
+      {
+        "role": "constraint",
+        "unit": {
+          "kind": "file",
+          "path": ".github/workflows/ci.yml"
+        }
+      },
+      {
+        "role": "constraint",
+        "unit": {
+          "kind": "file",
+          "path": ".github/workflows/release.yml"
+        }
+      },
+      {
+        "role": "constraint",
+        "unit": {
+          "kind": "file",
+          "path": ".github/publish-crate.sh"
+        }
+      }
+    ],
+    "risk": "high",
+    "sectionHeadings": [
+      "001: Tail completeness and trusted head commitments",
+      "1. Purpose and amendment",
+      "2. Scope, compatibility, and claimed units",
+      "3. The versioned commitment",
+      "3.1 Public wire shape",
+      "3.2 Canonical bytes and identities",
+      "3.3 Construction",
+      "4. Complete record-chain verification",
+      "5. Complete audit-segment verification",
+      "6. Trust and rollback boundary",
+      "7. CLI contract",
+      "7.1 Record chains",
+      "7.2 Audit segments",
+      "8. Functional requirements and acceptance",
+      "8.1 Required behavior",
+      "8.2 Future implementation commands",
+      "8.3 Registry-only consumer qualification",
+      "9. Release contract",
+      "10. Downstream and lifecycle boundaries"
+    ],
+    "specPath": "specs/001-tail-completeness-and-head-commitment/spec.md",
+    "status": "approved",
+    "summary": "Amend spec 000's unqualified deletion claim. Existing verifiers prove the integrity of the sequence presented to them, not that it is the latest or complete sequence. Add a versioned, domain-neutral head commitment and opt-in record-chain and closed-audit-segment verifiers for callers that obtain the expected head through a separately trusted channel. Preserve all 0.1.0 APIs and release the additive contract as 0.1.1.\n",
+    "title": "Tail completeness and trusted head commitments"
+  },
+  "shardHash": "e82cbc7fd3ee411dd27ee32dda1a47ce142fa67b8c874e79cc33650ac3daeac5",
+  "specVersion": "1.1.0"
+}

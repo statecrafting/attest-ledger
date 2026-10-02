@@ -1,0 +1,10 @@
+{
+  "package": {
+    "kind": "rust-lib",
+    "name": "attest-ledger-types",
+    "path": "crates/types",
+    "specRef": "000-attest-ledger-bootstrap"
+  },
+  "schemaVersion": "1.1.0",
+  "shardHash": "088a32c4bfc2ea3e5d6607734c2635ff420dbb342930c76e06646789b11b45ec"
+}

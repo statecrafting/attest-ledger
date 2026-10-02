@@ -1,0 +1,10 @@
+{
+  "package": {
+    "kind": "rust-bin",
+    "name": "attest-ledger-cli",
+    "path": "crates/cli",
+    "specRef": "000-attest-ledger-bootstrap"
+  },
+  "schemaVersion": "1.1.0",
+  "shardHash": "36786be749d34879cb9a2379bb03b84b9ac084fdd5e45aaaef54f18b8fd7a302"
+}

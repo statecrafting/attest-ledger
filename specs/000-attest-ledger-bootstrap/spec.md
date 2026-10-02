@@ -1,7 +1,7 @@
 ---
 id: "000-attest-ledger-bootstrap"
 title: "attest-ledger bootstrap (tamper-evident record ledger)"
-status: draft
+status: approved
 created: "2026-07-13"
 authors: ["attest-ledger"]
 kind: tooling
@@ -109,3 +109,8 @@ first and then that the genesis record binds the anchor. OAP's
 ledger-integrity property, so it is offered as an opt-in helper
 (`record_payload_bytes` against `DEFAULT_MAX_RECORD_BYTES`) rather than enforced
 by the verifier.
+
+## Owner ratification
+
+2026-10-02: Ratified under the owner's explicit fleet-upgrade instruction.
+Implementation lifecycle is unchanged by this approval.

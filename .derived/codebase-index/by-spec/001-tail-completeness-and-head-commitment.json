@@ -1,0 +1,398 @@
+{
+  "mapping": {
+    "amends": [
+      "000-attest-ledger-bootstrap"
+    ],
+    "dependsOn": [
+      "000-attest-ledger-bootstrap"
+    ],
+    "implementingPaths": [
+      {
+        "path": ".github/publish-crate.sh",
+        "source": "spec-edge"
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "source": "spec-edge"
+      },
+      {
+        "path": ".github/workflows/release.yml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "CHANGELOG.md",
+        "source": "spec-edge"
+      },
+      {
+        "path": "Cargo.lock",
+        "source": "spec-edge"
+      },
+      {
+        "path": "Cargo.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "README.md",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/cli/Cargo.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/cli/src/main.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/cli/tests/head_commitment_cli.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/Cargo.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/src/audit.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/src/head_commitment.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/src/lib.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/src/record_chain.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/core/tests/head_commitment.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/types/Cargo.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/types/src/head_commitment.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "crates/types/src/lib.rs",
+        "source": "spec-edge"
+      },
+      {
+        "path": "tests/registry-consumer/Cargo.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "tests/registry-consumer/src/main.rs",
+        "source": "spec-edge"
+      }
+    ],
+    "resolvedUnits": [
+      {
+        "locations": [
+          {
+            "file": "crates/cli/tests/head_commitment_cli.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/cli/tests/head_commitment_cli.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/src/head_commitment.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/head_commitment.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/tests/head_commitment.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/tests/head_commitment.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/types/src/head_commitment.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "crates/types/src/head_commitment.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "tests/registry-consumer/Cargo.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "tests/registry-consumer/Cargo.toml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "tests/registry-consumer/src/main.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "tests/registry-consumer/src/main.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "CHANGELOG.md"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "CHANGELOG.md"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "Cargo.lock"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "Cargo.lock"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "README.md"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "README.md"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/cli/Cargo.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "crates/cli/Cargo.toml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/cli/src/main.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "crates/cli/src/main.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/Cargo.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/Cargo.toml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/src/audit.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/audit.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/src/lib.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/lib.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/core/src/record_chain.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/record_chain.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/types/Cargo.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "crates/types/Cargo.toml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "crates/types/src/lib.rs"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "crates/types/src/lib.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "Cargo.toml",
+            "span": {
+              "endLine": 53,
+              "startLine": 31
+            }
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "anchor": "workspace.dependencies",
+          "file": "Cargo.toml",
+          "kind": "section"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "Cargo.toml",
+            "span": {
+              "endLine": 30,
+              "startLine": 22
+            }
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "anchor": "workspace.package",
+          "file": "Cargo.toml",
+          "kind": "section"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": ".github/publish-crate.sh"
+          }
+        ],
+        "ownership": false,
+        "sourceField": "references",
+        "unit": {
+          "kind": "file",
+          "path": ".github/publish-crate.sh"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": ".github/workflows/ci.yml"
+          }
+        ],
+        "ownership": false,
+        "sourceField": "references",
+        "unit": {
+          "kind": "file",
+          "path": ".github/workflows/ci.yml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": ".github/workflows/release.yml"
+          }
+        ],
+        "ownership": false,
+        "sourceField": "references",
+        "unit": {
+          "kind": "file",
+          "path": ".github/workflows/release.yml"
+        }
+      }
+    ],
+    "specId": "001-tail-completeness-and-head-commitment",
+    "specStatus": "approved"
+  },
+  "schemaVersion": "1.1.0",
+  "shardHash": "0c0a6ae76fca6ec269213ea2a15f79699499c5748d3dadee33167711571d6463"
+}

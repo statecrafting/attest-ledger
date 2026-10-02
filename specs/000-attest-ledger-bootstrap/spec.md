@@ -138,3 +138,16 @@ the managed constitution. The `amends` relationship continues to target spec ids
 The authored constitution retains corpus principles I through V and the
 amendment contract. Template authoring instructions are not part of the live
 constitution. This enrollment adds no unratified product principles.
+
+## Managed governance refresh (2026-10-02)
+
+The owner approved Statecraft profile revision 14 and fleet convergence after
+the revision-13 enrollment. This amendment adopts revision 14 with the
+existing exact spec-spine =0.28.0 pin and preserves the actual Rust code
+checks, all current governance parameters, and protected owner review.
+The revision-13 enrollment above remains the historical adoption record.
+The managed installer remains at .bin/spec-spine.
+The corrected constitution template is an authored customization. Its
+per-path managed-to-user ownership transfer is recorded by the Statecraft
+CLI with owner-delegated consent; its bytes are preserved, and init apply
+never silently overwrites that corrected amendment guidance.

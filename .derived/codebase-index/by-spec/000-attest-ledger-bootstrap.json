@@ -2,15 +2,31 @@
   "mapping": {
     "implementingPaths": [
       {
+        "path": ".github/CODEOWNERS",
+        "source": "spec-edge"
+      },
+      {
+        "path": ".github/workflows/statecraft-ai-review.yml",
+        "source": "spec-edge"
+      },
+      {
+        "path": ".github/workflows/statecraft-ci.yml",
+        "source": "spec-edge"
+      },
+      {
+        "path": ".statecraft/",
+        "source": "spec-edge"
+      },
+      {
+        "path": "AGENTS.md",
+        "source": "spec-edge"
+      },
+      {
         "path": "Cargo.toml",
         "source": "spec-edge"
       },
       {
-        "path": "NOTICE",
-        "source": "spec-edge"
-      },
-      {
-        "path": "README.md",
+        "path": "Makefile",
         "source": "spec-edge"
       },
       {
@@ -60,9 +76,112 @@
       {
         "path": "crates/types/src/lib.rs",
         "source": "spec-edge"
+      },
+      {
+        "path": "scripts/statecraft/",
+        "source": "spec-edge"
+      },
+      {
+        "path": "spec-spine.toml",
+        "source": "spec-edge"
+      },
+      {
+        "path": "standards/spec/",
+        "source": "spec-edge"
       }
     ],
     "resolvedUnits": [
+      {
+        "locations": [
+          {
+            "file": ".statecraft/"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "directory",
+          "path": ".statecraft/"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "scripts/statecraft/"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "directory",
+          "path": "scripts/statecraft/"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "standards/spec/"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "directory",
+          "path": "standards/spec/"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": ".github/CODEOWNERS"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": ".github/CODEOWNERS"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": ".github/workflows/statecraft-ai-review.yml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": ".github/workflows/statecraft-ai-review.yml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": ".github/workflows/statecraft-ci.yml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": ".github/workflows/statecraft-ci.yml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "AGENTS.md"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "AGENTS.md"
+        }
+      },
       {
         "locations": [
           {
@@ -74,6 +193,19 @@
         "unit": {
           "kind": "file",
           "path": "Cargo.toml"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "Makefile"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "Makefile"
         }
       },
       {
@@ -196,6 +328,19 @@
       {
         "locations": [
           {
+            "file": "spec-spine.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "spec-spine.toml"
+        }
+      },
+      {
+        "locations": [
+          {
             "file": "NOTICE"
           }
         ],
@@ -223,6 +368,6 @@
     "specId": "000-attest-ledger-bootstrap",
     "specStatus": "approved"
   },
-  "schemaVersion": "1.1.0",
-  "shardHash": "78aa9be8da3f395da1963846686a0324837eed04e7ad1329de5344700e20282e"
+  "schemaVersion": "1.2.0",
+  "shardHash": "47a87da110b622a54f642fc646cfd32f7a351c56da85d4206c346c0fd45a32ee"
 }

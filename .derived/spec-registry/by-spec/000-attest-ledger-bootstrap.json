@@ -6,6 +6,42 @@
     "created": "2026-07-13",
     "establishes": [
       {
+        "kind": "directory",
+        "path": "standards/spec/"
+      },
+      {
+        "kind": "file",
+        "path": "spec-spine.toml"
+      },
+      {
+        "kind": "file",
+        "path": "AGENTS.md"
+      },
+      {
+        "kind": "file",
+        "path": "Makefile"
+      },
+      {
+        "kind": "file",
+        "path": ".github/CODEOWNERS"
+      },
+      {
+        "kind": "file",
+        "path": ".github/workflows/statecraft-ai-review.yml"
+      },
+      {
+        "kind": "file",
+        "path": ".github/workflows/statecraft-ci.yml"
+      },
+      {
+        "kind": "directory",
+        "path": ".statecraft/"
+      },
+      {
+        "kind": "directory",
+        "path": "scripts/statecraft/"
+      },
+      {
         "kind": "file",
         "path": "Cargo.toml"
       },
@@ -66,6 +102,16 @@
       }
     ],
     "risk": "low",
+    "sectionDigests": {
+      "000-attest-ledger-bootstrap": "42cf5819a6b0299065a9cfe8a67320be2e43f0722b8854d6793bbb21ec0b26eb",
+      "1-purpose": "6606396ef1ee9a69bf4c7b759b8dc9443e5d49a8f8f36ddf8d949e351f3b2386",
+      "2-scope": "b0840ff73c6dfcb143a91849e4579ad5466986089857061226ebdb703b4ea530",
+      "3-provenance": "7c14234ea31e2e3888e086cc97146716313aa8aa385cb1c7a31ef60e90993edf",
+      "4-established-units": "280b45882d35772626f13580af607a94436648a276e52dbe4d685c479567ecf6",
+      "5-notes-on-the-generalization": "3abe1ecbcad0865fe97dc2878677ecaae3090f7f3d3f000b1388980e8ba9d83b",
+      "managed-governance-enrollment-2026-10-02": "8c3bdb4a9adca3c028165cc8eae3bb4230e4371833172b8aa6797545bef57411",
+      "owner-ratification": "bdb406bda8f9d0b6d42078aa2f2c0632aea510ae90f04b574b17c2d39f2a22dc"
+    },
     "sectionHeadings": [
       "000: attest-ledger bootstrap",
       "1. Purpose",
@@ -73,13 +119,14 @@
       "3. Provenance",
       "4. Established units",
       "5. Notes on the generalization",
-      "Owner ratification"
+      "Owner ratification",
+      "Managed governance enrollment (2026-10-02)"
     ],
     "specPath": "specs/000-attest-ledger-bootstrap/spec.md",
     "status": "approved",
     "summary": "Bootstrap spec for the attest-ledger repository: a three-crate workspace vending a tamper-evident record ledger (append-only, hash-linked, Ed25519-signed) with an independent verifier. Extracted (relicensed Apache-2.0 by the sole copyright holder) from the Open Agentic Platform's crates/policy-kernel (proof_chain.rs and the pure subset of audit.rs). It depends on canonical-keysort-json for reproducible hashing. This spec establishes the workspace skeleton and seeds this repo's own spec corpus, which is governed by the pinned spec-spine library.\n",
     "title": "attest-ledger bootstrap (tamper-evident record ledger)"
   },
-  "shardHash": "3ee931a41ab91854651951e14acd5ef043a162f4975c37df2238f41c8ed32356",
-  "specVersion": "1.1.0"
+  "shardHash": "47a87da110b622a54f642fc646cfd32f7a351c56da85d4206c346c0fd45a32ee",
+  "specVersion": "1.9.0"
 }

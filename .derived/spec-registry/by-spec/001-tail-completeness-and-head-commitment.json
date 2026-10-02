@@ -174,6 +174,27 @@
       }
     ],
     "risk": "high",
+    "sectionDigests": {
+      "001-tail-completeness-and-trusted-head-commitments": "5296d16109da777f35d26f7eb19654adb3c5a324873ce27cdb9ab6ef1561a699",
+      "1-purpose-and-amendment": "4bc3e5ce6d588fe4829060d9cc83a7ec8f8861928a64ee9e7de83921844cfb3f",
+      "10-downstream-and-lifecycle-boundaries": "73fcea058a9eed092491d453706eaf6b627c8f2f704d154f49c1edec884009bb",
+      "2-scope-compatibility-and-claimed-units": "2cd0b566093766d9796f84b894f83018d0b2de88e68adf02a3ad35ac505e9c77",
+      "3-1-public-wire-shape": "205101d5062070373cb54e700756fd0526be8f7ebcfd164faf5b3927e9296664",
+      "3-2-canonical-bytes-and-identities": "dbd29c51b0e2f1934697298a0a92e38cc0792cecd7dfdee4bf53077e958c21bd",
+      "3-3-construction": "cc2e49a705efb7e1c6dbc6b1e167dc2dd92a1950dc0ea397895ef3f6c4953e54",
+      "3-the-versioned-commitment": "f8e6ee028b08f50cce267e084a93ad6f7c9461ac3eb2692bc2fa75e636555679",
+      "4-complete-record-chain-verification": "384bc6e1928a666c453f3de50e9bc61b737ece655ef35460411add6a2fb39591",
+      "5-complete-audit-segment-verification": "700383422d14c77cb0c5188fc36a2cdc2e047038023ac0834816bef50732a058",
+      "6-trust-and-rollback-boundary": "db2a5501806fa8f9a7b21574f58c53dbd516b05ef8abd09ada5563bc59d54249",
+      "7-1-record-chains": "b69dce961b17ac0356cb026fe545ae860b5bc55a155e1a2f33f90f0611cf4107",
+      "7-2-audit-segments": "f6f9cbc3c1105b43800a74fbe3f2659169c704ee1047f675ad4a0987d033be06",
+      "7-cli-contract": "71f5fc239daf9553d0f658ad5b5bc4bf4611f36661444022684766ef59814d51",
+      "8-1-required-behavior": "6f53ffba5e5860a16afafe74b7d1e92ce788242714ae93fa71ed78e066ef48ed",
+      "8-2-future-implementation-commands": "7974a19962d7b55b0ba316ce311c73b6671066ac2d053b379f6fbfe5bc5c10f0",
+      "8-3-registry-only-consumer-qualification": "575d15f1f40fdd1baae50de10b7cefbf6efa3b6522559450810da22a60fb7842",
+      "8-functional-requirements-and-acceptance": "1eb15a769f472a228411d8551f3c794eefcb0d441f897c329baec847a8ab3519",
+      "9-release-contract": "c77d56bb49e7bc2757286a35d65787c61c6908f5896cb4c2bd8cd125c1829f1b"
+    },
     "sectionHeadings": [
       "001: Tail completeness and trusted head commitments",
       "1. Purpose and amendment",
@@ -201,5 +222,5 @@
     "title": "Tail completeness and trusted head commitments"
   },
   "shardHash": "e82cbc7fd3ee411dd27ee32dda1a47ce142fa67b8c874e79cc33650ac3daeac5",
-  "specVersion": "1.1.0"
+  "specVersion": "1.9.0"
 }

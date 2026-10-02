@@ -1,4 +1,4 @@
-# Rendered by Statecraft from profile github-actions-rust revision 13,
+# Rendered by Statecraft from profile github-actions-rust revision 14,
 # because this repository had no Makefile. Every target calls the same script
 # CI runs, so the local and remote gates are one definition.
 .PHONY: tools gate code

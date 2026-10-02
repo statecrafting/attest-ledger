@@ -1,8 +1,11 @@
+[meta]
+required_version = "=0.28.0"
+
 # spec-spine governing the attest-ledger repository (dogfood).
 #
 # attest-ledger vends a three-crate tamper-evident ledger; its own specs/ corpus
-# is governed by the published spec-spine library, pinned as a dev dependency
-# and invoked as `npx --no-install spec-spine {compile,lint,index check,couple}`.
+# is governed by the published spec-spine CLI, pinned by [meta] required_version
+# and invoked as `.bin/spec-spine {compile,lint,index check,couple}`.
 # This is the same dogfooding pattern spec-spine, OAP, tenant-emit, tenant-tail,
 # and canonical-keysort-json all follow. spec-spine reads its config from
 # `spec-spine.toml` at the repo root; only the metadata namespace and layout
@@ -29,7 +32,7 @@ standalone_rust_workspaces = []
 standalone_npm_packages    = []
 
 [index]
-extra_hashed_inputs = ["standards/**", ".github/workflows/**"]
+extra_hashed_inputs = ["AGENTS.md", "Makefile", "scripts/statecraft/**/*", ".statecraft/AGENTS.md", ".statecraft/environment.json", ".statecraft/setup/github-actions-rust.json", ".github/CODEOWNERS", "standards/**/*", ".github/workflows/**/*"]
 resolver_exclusions = ["target", "node_modules", ".derived", "dist", "build"]
 
 [branding]
@@ -42,3 +45,24 @@ waiver_keyword = "Spec-Drift-Waiver:"
 
 [frontmatter]
 extra_known_keys = []
+
+[lint]
+# Legacy whole-file source claims preserve their established ownership model.
+# They are deliberately unwitnessed rather than making every code edit a global hash.
+unwitnessed_allowed = [
+  "CHANGELOG.md",
+  "Cargo.lock",
+  "README.md",
+  "crates/cli/src/main.rs",
+  "crates/cli/tests/head_commitment_cli.rs",
+  "crates/core/src/audit.rs",
+  "crates/core/src/head_commitment.rs",
+  "crates/core/src/lib.rs",
+  "crates/core/src/record_chain.rs",
+  "crates/core/src/signing.rs",
+  "crates/core/tests/head_commitment.rs",
+  "crates/types/src/head_commitment.rs",
+  "crates/types/src/lib.rs",
+  "tests/registry-consumer/Cargo.toml",
+  "tests/registry-consumer/src/main.rs",
+]

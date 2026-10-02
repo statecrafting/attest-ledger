@@ -5,6 +5,6 @@
     "path": "crates/core",
     "specRef": "000-attest-ledger-bootstrap"
   },
-  "schemaVersion": "1.1.0",
-  "shardHash": "eb4b4a3f69ecd2005316b1a984f990106b797866731f7dd122e9b877eca9a220"
+  "schemaVersion": "1.2.0",
+  "shardHash": "7b34e45a59e2685e249c4190ba7db9fee45b12eeddbc475ad9751921b2327187"
 }

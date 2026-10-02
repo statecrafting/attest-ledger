@@ -8,18 +8,6 @@
     ],
     "implementingPaths": [
       {
-        "path": ".github/publish-crate.sh",
-        "source": "spec-edge"
-      },
-      {
-        "path": ".github/workflows/ci.yml",
-        "source": "spec-edge"
-      },
-      {
-        "path": ".github/workflows/release.yml",
-        "source": "spec-edge"
-      },
-      {
         "path": "CHANGELOG.md",
         "source": "spec-edge"
       },
@@ -393,6 +381,6 @@
     "specId": "001-tail-completeness-and-head-commitment",
     "specStatus": "approved"
   },
-  "schemaVersion": "1.1.0",
-  "shardHash": "0c0a6ae76fca6ec269213ea2a15f79699499c5748d3dadee33167711571d6463"
+  "schemaVersion": "1.2.0",
+  "shardHash": "07f5b47286e71e73304e0e1ad97a76d8f4568613ac501c0ce448b39a30cf81fc"
 }

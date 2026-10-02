@@ -1,0 +1,85 @@
+{
+  "record": {
+    "authors": [
+      "attest-ledger"
+    ],
+    "created": "2026-07-13",
+    "establishes": [
+      {
+        "kind": "file",
+        "path": "Cargo.toml"
+      },
+      {
+        "kind": "file",
+        "path": "crates/types/Cargo.toml"
+      },
+      {
+        "kind": "file",
+        "path": "crates/types/src/lib.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/core/Cargo.toml"
+      },
+      {
+        "kind": "file",
+        "path": "crates/core/src/lib.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/core/src/record_chain.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/core/src/audit.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/core/src/signing.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/cli/Cargo.toml"
+      },
+      {
+        "kind": "file",
+        "path": "crates/cli/src/main.rs"
+      }
+    ],
+    "id": "000-attest-ledger-bootstrap",
+    "implementation": "pending",
+    "kind": "tooling",
+    "references": [
+      {
+        "role": "context",
+        "unit": {
+          "kind": "file",
+          "path": "README.md"
+        }
+      },
+      {
+        "role": "context",
+        "unit": {
+          "kind": "file",
+          "path": "NOTICE"
+        }
+      }
+    ],
+    "risk": "low",
+    "sectionHeadings": [
+      "000: attest-ledger bootstrap",
+      "1. Purpose",
+      "2. Scope",
+      "3. Provenance",
+      "4. Established units",
+      "5. Notes on the generalization",
+      "Owner ratification"
+    ],
+    "specPath": "specs/000-attest-ledger-bootstrap/spec.md",
+    "status": "approved",
+    "summary": "Bootstrap spec for the attest-ledger repository: a three-crate workspace vending a tamper-evident record ledger (append-only, hash-linked, Ed25519-signed) with an independent verifier. Extracted (relicensed Apache-2.0 by the sole copyright holder) from the Open Agentic Platform's crates/policy-kernel (proof_chain.rs and the pure subset of audit.rs). It depends on canonical-keysort-json for reproducible hashing. This spec establishes the workspace skeleton and seeds this repo's own spec corpus, which is governed by the pinned spec-spine library.\n",
+    "title": "attest-ledger bootstrap (tamper-evident record ledger)"
+  },
+  "shardHash": "3ee931a41ab91854651951e14acd5ef043a162f4975c37df2238f41c8ed32356",
+  "specVersion": "1.1.0"
+}

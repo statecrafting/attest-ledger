@@ -1,7 +1,7 @@
 ---
 id: "002-pinned-trust-roots"
 title: "Pinned trust roots for anchor verification"
-status: draft
+status: approved
 created: "2026-10-07"
 authors: ["attest-ledger"]
 kind: tooling
@@ -46,9 +46,9 @@ references:
 
 # 002: Pinned trust roots for anchor verification
 
-Draft. An agent authored this spec and its implementation; the owner ratifies
-it by setting `status: approved`. Nothing here authorizes a merge, a tag or a
-publication.
+Ratified by Bart on 2026-10-07, together with the implementation in the same
+pull request and its merge. Ratification does not authorize a tag, a GitHub
+release or a crates.io publication (section 9).
 
 ## 1. Purpose
 

@@ -317,8 +317,8 @@
       }
     ],
     "specId": "002-pinned-trust-roots",
-    "specStatus": "draft"
+    "specStatus": "approved"
   },
   "schemaVersion": "1.2.0",
-  "shardHash": "e51759ecb6c3268bc5eebe9f5c41766ff0e62e59a896b012b01bc01e5467f333"
+  "shardHash": "1baf35e7de3233a30fd6e8138e79539ee6367a74df54aca5c9bb3cf5df551d4d"
 }

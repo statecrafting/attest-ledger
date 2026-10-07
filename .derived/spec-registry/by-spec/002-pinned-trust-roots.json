@@ -144,7 +144,7 @@
     ],
     "risk": "high",
     "sectionDigests": {
-      "002-pinned-trust-roots-for-anchor-verification": "923b6eb5a7a2fedf3c9f39c2dfe7fe7d9e4028a3d19ba3d7d87152cb2b28c8b7",
+      "002-pinned-trust-roots-for-anchor-verification": "db87adb17a13d8a602b41bd7ac4676140c70ed23d8e4379ac4d5b4bd24b38c6c",
       "1-purpose": "6d0db239f3f1067655dacdb1715a402549cc7c3aa04fa812d15db51e7b79c0ec",
       "2-scope-compatibility-and-claimed-units": "44ae68eb65964165c1279e011475846bc2bb88a4cc9973dbdb5e8ddac76aa1c4",
       "3-1-wire-shape": "ca8fb0efe715f075d046ed87a4be80b27265af4f00d090635ec5e138d7f6b78f",
@@ -190,10 +190,10 @@
       "9. Release boundary"
     ],
     "specPath": "specs/002-pinned-trust-roots/spec.md",
-    "status": "draft",
+    "status": "approved",
     "summary": "The released anchor verifier checks a chain anchor's Ed25519 signature against the public key the anchor itself carries, so anyone can mint a self-consistent chain. That proves integrity, not authorship. Add a pinned trust-root input: a canonical, digestible set of accepted Ed25519 keys, each with a key id derived from its bytes and an optional chain-id scope, and root-pinned variants of the anchor, anchor-chain and head verifiers that pass only when the anchor's key is pinned, in scope, and produced a signature that verifies under strict Ed25519 rules. Add the matching CLI input and exit code. Existing APIs, hashes, signatures, head commitments and CLI stdout and exit codes are unchanged. Release as an additive 0.2.0.\n",
     "title": "Pinned trust roots for anchor verification"
   },
-  "shardHash": "9960f917e43e6e0f9cf960d51d3f453037a3d8552872c5f5fe0ae433ba475ebf",
+  "shardHash": "b43e27bfeeb36f91adace544df0e51ef55bb1d3dc0f1dcbdfecbc3dd1e1cf262",
   "specVersion": "1.9.0"
 }

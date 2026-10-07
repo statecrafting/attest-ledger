@@ -288,14 +288,14 @@ mod tests {
         a
     }
 
-    fn records(n: usize, salt: u64) -> Vec<LedgerRecord> {
+    fn records(n: usize, case: u64) -> Vec<LedgerRecord> {
         let mut chain = RecordChain::new(ANCHOR_HASH.into());
         (0..n)
             .map(|i| {
                 chain.append(
                     format!("r{i}"),
                     format!("2026-10-07T00:00:{i:02}Z"),
-                    json!({ "n": i, "salt": salt }),
+                    json!({ "n": i, "case": case }),
                 )
             })
             .collect()
@@ -626,9 +626,9 @@ mod tests {
         assert_eq!(
             hashes,
             [
-                "sha256:7d5fc597b98c7c6cae0fcc696ffeea156fdff58465bd770448f732872792cc84",
-                "sha256:f161f6b5b4fec7c2a20c2b222882c85eb630278db020bcedd45889a366271aba",
-                "sha256:86dd76377acef37623fbc1ec4e52b13d6e5befff3319ca48da80f0f68c3c20fc",
+                "sha256:adf022b03d4ad4421f6ca2c7bbd16a94636f47b0b122dce4b2f8b2df8ffdbda4",
+                "sha256:d89e34fc068ec1ddec5095c24093ac7a10c301870acf23557f9c1e849aa2f11f",
+                "sha256:f3de98175a80b6b2f27ea090c865b3d3e1c88911512b312cb193619d268afeb2",
             ]
         );
         let a = anchor("chain-a", &key(1));
@@ -647,7 +647,7 @@ mod tests {
         let head = crate::build_record_head_commitment(&a, &recs).unwrap();
         assert_eq!(
             crate::head_commitment_digest(&head),
-            "sha256:50d5eda38d90706f980e2c5c741b2bc8c6e060ee0bc399073bf3df352b36c9a1"
+            "sha256:f24f3ae053d0540fde93078e80cb3cbde5709e60c3e3558d4eb16425ca2e85c5"
         );
         verify_anchor(&a).unwrap();
         let roots = roots_of(&[(1, Some(vec!["chain-a"]))]);

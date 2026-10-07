@@ -4,6 +4,10 @@
 //! adversary who can regenerate the chain produces a consistent-looking hash
 //! sequence with no anchor to a real key. Verifiers check the anchor signature
 //! FIRST, before walking record hashes.
+//!
+//! [`verify_anchor`] checks the signature against the key embedded in the
+//! anchor, which proves integrity only. Authenticity needs a key the verifier
+//! pins itself: see [`crate::verify_anchor_with_roots`].
 
 use attest_ledger_types::{ChainAnchor, GenesisAttestation, GenesisAttestationKind};
 use base64::{Engine as _, engine::general_purpose::STANDARD as B64};
@@ -19,7 +23,7 @@ pub const ENV_SIGNING_KEY_PATH: &str = "ATTEST_LEDGER_SIGNING_KEY_PATH";
 /// `genesis_signature` zeroed, serialized canonically (key-sorted). Sign and
 /// verify both route through this, so the field naming convention and key order
 /// cannot desynchronize the two sides.
-fn anchor_signing_bytes(anchor: &ChainAnchor) -> String {
+pub(crate) fn anchor_signing_bytes(anchor: &ChainAnchor) -> String {
     let mut a = anchor.clone();
     a.genesis_signature = String::new();
     canonical_keysort_json::to_canonical_string(
@@ -38,6 +42,13 @@ pub fn sign_anchor(anchor: &mut ChainAnchor, key: &SigningKey) {
 }
 
 /// Verify an anchor's Ed25519 signature against its embedded public key.
+///
+/// **Self-attesting: integrity only, not authenticity.** The key checked is
+/// the one the anchor carries, so anyone can mint an anchor that passes. This
+/// proves the anchor was not altered after signing, not who signed it. To
+/// decide who may sign a chain's genesis, call
+/// [`verify_anchor_with_roots`](crate::verify_anchor_with_roots) with a pinned
+/// [`TrustRootsV1`](crate::TrustRootsV1).
 ///
 /// Returns `Err` with a specific diagnostic distinguishing "unsigned" (empty
 /// public key or signature) from "invalid" (signature does not verify).

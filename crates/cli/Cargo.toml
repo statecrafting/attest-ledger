@@ -30,6 +30,10 @@ serde = { workspace = true }
 serde_json = { workspace = true }
 clap = { workspace = true }
 
+[dev-dependencies]
+# The trust-roots CLI test signs fixture anchors with fixed keys.
+ed25519-dalek = { workspace = true }
+
 [lints]
 workspace = true
 

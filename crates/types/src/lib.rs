@@ -17,10 +17,15 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 mod head_commitment;
+mod trust_roots;
 
 pub use head_commitment::{
     AuditHeadVerifyError, HEAD_COMMITMENT_SCHEMA_V1, HeadCommitmentKind, HeadCommitmentV1,
     HeadVerifyError,
+};
+pub use trust_roots::{
+    AnchorField, RootVerifyError, TRUST_ROOT_ALGORITHM_ED25519, TRUST_ROOTS_SCHEMA_V1, TrustRootV1,
+    TrustRootsError, TrustRootsV1,
 };
 
 /// One append-only ledger record.

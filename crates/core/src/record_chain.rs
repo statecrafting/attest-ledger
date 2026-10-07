@@ -145,9 +145,11 @@ pub fn verify_chain(records: &[LedgerRecord]) -> Result<(), VerifyError> {
 /// Verify the anchor signature FIRST, then that the genesis record binds the
 /// anchor, then the integrity of the presented chain.
 ///
-/// The anchor is the authoritative external trust root: a chain rooted in an
-/// unsigned or forged anchor is untrusted regardless of how well its per-record
-/// hashes line up, so the signature check gates everything.
+/// The signature is checked against the anchor's embedded key
+/// ([`crate::verify_anchor`]), so this proves integrity, not who signed the
+/// anchor: anyone can mint a chain that passes. Use
+/// [`crate::verify_chain_with_anchor_and_roots`] with pinned trust roots to
+/// authenticate the signer.
 /// This does not prove the sequence is latest or complete; use
 /// [`crate::verify_chain_with_head`] with an independently trusted expected
 /// head for that property.

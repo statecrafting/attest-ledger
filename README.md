@@ -14,8 +14,7 @@ use serde_json::json;
 // Root the chain at some pinned hash (a bundle hash, a context hash, anything).
 let mut chain = RecordChain::new("sha256:0000...".into());
 
-// A signed genesis anchor gives an external verifier a trust root beyond the
-// chain's own hashes. The key resolves from ATTEST_LEDGER_SIGNING_KEY, or an
+// A signed genesis anchor binds the chain to a signing key. The key resolves from ATTEST_LEDGER_SIGNING_KEY, or an
 // ephemeral key is generated for this writer.
 let anchor = chain.build_anchor("chain-001".into(), "2026-07-13T00:00:00Z".into());
 
@@ -37,7 +36,11 @@ verify_chain_with_head(&anchor, &[r0], &head).unwrap();
 - **Record chain** (`RecordChain` + `verify_chain` / `verify_chain_with_anchor`):
   individual `LedgerRecord`s, each hashing the canonical JSON of the prior
   record's hash into its own. A signed `ChainAnchor` pins the chain to a root.
-  These APIs verify the integrity of the presented sequence. Add
+  `verify_anchor` and `verify_chain_with_anchor` check the signature against
+  the key the anchor itself carries: integrity, not authenticity. Pin the keys
+  you accept in a `TrustRootsV1` and call `verify_anchor_with_roots` or
+  `verify_chain_with_anchor_and_roots` / `verify_chain_with_head_and_roots` to
+  decide who may sign a chain's genesis. These APIs verify the integrity of the presented sequence. Add
   `HeadCommitmentV1` plus `verify_chain_with_head` to prove tail completeness
   against an independently trusted expected head.
 - **Audit-segment chain** (`AuditChain` + `verify_audit_chain`): a
@@ -65,6 +68,11 @@ verify_chain_with_head(&anchor, &[r0], &head).unwrap();
   persistence. Writing records to JSONL files, rotating them, or committing them
   to a database is the consumer's concern. The `attest-ledger` CLI does the file
   I/O at the edge.
+- **Authorship is pinned by the verifier.** A `TrustRootsV1` lists the
+  Ed25519 keys a verifier accepts, each with a key id derived from its bytes
+  and an optional set of chain ids it may sign for. It has one canonical form
+  and a `sha256:` digest (`trust_roots_digest`), so a deployment can pin
+  "this root set" by hash. Root-pinned verification uses strict Ed25519.
 - **Freshness is external.** A trusted head binds schema, chain, signed anchor,
   expected count, and terminal hash. The caller must obtain it through a
   separately trusted channel. A head stored and rolled back with the ledger is
@@ -88,6 +96,10 @@ chain VERIFIED: 12 record(s), anchor signature valid, integrity only (no trusted
 $ attest-ledger verify chain.jsonl --anchor anchor.json --head head.json --require-head
 chain VERIFIED: 12 record(s), anchor signature valid, trusted head matched
 
+$ attest-ledger verify chain.jsonl --anchor anchor.json --roots roots.json \
+    --roots-digest sha256:1883... --require-roots
+chain VERIFIED: 12 record(s), anchor signature valid, signer authenticated by pinned root sha256:fbc5... (roots sha256:1883...), integrity only (no trusted head supplied)
+
 $ attest-ledger verify-audit segment.jsonl --genesis sha256:abc...
 audit segment VERIFIED: 8 record(s), integrity only (no trusted head supplied)
 
@@ -95,9 +107,15 @@ $ attest-ledger verify-audit segment.jsonl --head audit-head.json --require-head
 audit segment VERIFIED: 8 record(s), trusted head matched
 ```
 
-Exit 0 on a clean verify, exit 1 with a specific diagnostic naming the first
-broken record or head mismatch. `--require-head` exits 1 rather than silently
-falling back when its trusted head input is absent.
+| Exit | Meaning |
+|---|---|
+| 0 | Verified. With `--roots`, the anchor's signer is authenticated. Without it, a signed anchor was checked against its embedded key only, and stderr says so. |
+| 1 | Invalid: a broken record, head mismatch, bad signature, invalid root set, digest mismatch, unreadable input, or a missing required input. |
+| 2 | Command-line syntax error. |
+| 3 | `--roots` only: the chain is intact under the anchor's embedded key, but the roots do not authorise that key (unsigned is exit 1). |
+
+`--require-head` and `--require-roots` exit 1 rather than silently falling back
+when their input is absent.
 
 ## Ecosystem
 

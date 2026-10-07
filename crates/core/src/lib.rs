@@ -11,8 +11,12 @@
 //!
 //! - **Record chain** ([`RecordChain`]): individual [`LedgerRecord`]s, each
 //!   hashing the canonical JSON of the prior record's hash into its own. A
-//!   signed [`ChainAnchor`] pins the chain to a root and is Ed25519-signed, so
-//!   an external verifier has a trust root beyond the chain's own hashes.
+//!   signed [`ChainAnchor`] pins the chain to a root and is Ed25519-signed.
+//!   The signature authenticates its signer only when the verifier pins the
+//!   accepted keys itself in a [`TrustRootsV1`] and calls
+//!   [`verify_anchor_with_roots`] or a `*_and_roots` chain verifier;
+//!   [`verify_anchor`] checks the anchor's own embedded key, which proves
+//!   integrity only.
 //! - **Audit-segment chain** ([`AuditChain`]): a content-agnostic, hash-chained
 //!   segment log for higher-volume append, closed with a size-anchoring segment
 //!   head, verified by [`verify_audit_chain`].
@@ -46,11 +50,13 @@ mod audit;
 mod head_commitment;
 mod record_chain;
 mod signing;
+mod trust_roots;
 
 pub use attest_ledger_types::{
     AuditHeadVerifyError, AuditVerifyError, ChainAnchor, GenesisAttestation,
     GenesisAttestationKind, HEAD_COMMITMENT_SCHEMA_V1, HeadCommitmentKind, HeadCommitmentV1,
-    HeadVerifyError, LedgerRecord, VerifyError,
+    HeadVerifyError, LedgerRecord, RootVerifyError, TRUST_ROOT_ALGORITHM_ED25519,
+    TRUST_ROOTS_SCHEMA_V1, TrustRootV1, TrustRootsError, TrustRootsV1, VerifyError,
 };
 
 pub use audit::{AuditChain, verify_audit_chain};
@@ -65,6 +71,11 @@ pub use record_chain::{
 };
 pub use signing::{
     ENV_SIGNING_KEY, ENV_SIGNING_KEY_PATH, resolve_signing_material, sign_anchor, verify_anchor,
+};
+pub use trust_roots::{
+    TRUST_ROOT_KEY_ID_DOMAIN_V1, build_trust_roots, trust_root_key_id, trust_roots_canonical_bytes,
+    trust_roots_digest, validate_trust_roots, verify_anchor_with_roots,
+    verify_chain_with_anchor_and_roots, verify_chain_with_head_and_roots,
 };
 
 /// `sha256:<hex>` over `bytes`.

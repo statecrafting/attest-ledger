@@ -1,0 +1,199 @@
+{
+  "record": {
+    "authors": [
+      "attest-ledger"
+    ],
+    "created": "2026-10-07",
+    "dependsOn": [
+      "000-attest-ledger-bootstrap",
+      "001-tail-completeness-and-head-commitment"
+    ],
+    "establishes": [
+      {
+        "kind": "file",
+        "path": "crates/types/src/trust_roots.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/core/src/trust_roots.rs"
+      },
+      {
+        "kind": "file",
+        "path": "crates/cli/tests/trust_roots_cli.rs"
+      },
+      {
+        "id": "attest_ledger_types::trust_roots::TrustRootsV1",
+        "kind": "symbol"
+      },
+      {
+        "id": "attest_ledger_core::trust_roots::verify_anchor_with_roots",
+        "kind": "symbol"
+      }
+    ],
+    "extends": [
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "anchor": "workspace.package",
+          "file": "Cargo.toml",
+          "kind": "section"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "anchor": "workspace.dependencies",
+          "file": "Cargo.toml",
+          "kind": "section"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "Cargo.lock"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/types/src/lib.rs"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/lib.rs"
+        }
+      },
+      {
+        "nature": "corrective",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/signing.rs"
+        }
+      },
+      {
+        "nature": "corrective",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/core/src/record_chain.rs"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/cli/Cargo.toml"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "crates/cli/src/main.rs"
+        }
+      },
+      {
+        "nature": "corrective",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "README.md"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "CHANGELOG.md"
+        }
+      },
+      {
+        "nature": "additive",
+        "spec": "000-attest-ledger-bootstrap",
+        "unit": {
+          "kind": "file",
+          "path": "spec-spine.toml"
+        }
+      }
+    ],
+    "id": "002-pinned-trust-roots",
+    "implementation": "complete",
+    "kind": "tooling",
+    "references": [
+      {
+        "role": "constraint",
+        "unit": {
+          "kind": "file",
+          "path": ".github/workflows/release.yml"
+        }
+      }
+    ],
+    "risk": "high",
+    "sectionDigests": {
+      "002-pinned-trust-roots-for-anchor-verification": "923b6eb5a7a2fedf3c9f39c2dfe7fe7d9e4028a3d19ba3d7d87152cb2b28c8b7",
+      "1-purpose": "6d0db239f3f1067655dacdb1715a402549cc7c3aa04fa812d15db51e7b79c0ec",
+      "2-scope-compatibility-and-claimed-units": "44ae68eb65964165c1279e011475846bc2bb88a4cc9973dbdb5e8ddac76aa1c4",
+      "3-1-wire-shape": "ca8fb0efe715f075d046ed87a4be80b27265af4f00d090635ec5e138d7f6b78f",
+      "3-2-key-id": "6b61868bfe0dc6c094fc6520be22bf71da41b6493eea81e6162fe826cf7435ce",
+      "3-3-validity-and-canonical-form": "b2968ea301960d052faac6a993bc65a829aabf72ba1a80656bd9559e0b547d5f",
+      "3-4-canonical-bytes-and-digest": "191c9b6dcf1aec6065efa352d893c3fc83e7dce559a5ed2ebf4e0fa1b3a08e3c",
+      "3-5-errors": "7e569c0577697026207a1b98d28771dda324aaa1bd5135e415da8edef7dabc65",
+      "3-the-trust-root-set": "e61b11c51c22805a7bb02c9e9c2abc1b9f783521f9f73b486bdc3e2a1468536f",
+      "4-1-functions": "cdf21b2ed16ca9aebeb0bcc91ebb21b3bf29932dbdf48e3926bdcf2c36da22c3",
+      "4-2-order-of-checks": "b99d7e28d1e1fde484c1661b20165b79b9b5f40898d0a1d2fd57aac2716a5ac4",
+      "4-3-strict-ed25519-only": "fde4b30ee674d74851a08e6a6f65c3a70524b699c7dacd23e09d8fcfcfa1da65",
+      "4-root-pinned-verification": "71a93c848cd7edfa9822fd49663399eeacc7d9d9fdde9e9a6a5dba73df10f8fd",
+      "5-1-root-pinned-verification": "991592920134271b1be6eff4d4cbad5147c7a7fa3791b756c29c8fd81384f377",
+      "5-2-without-roots": "7b3a6967a6d61e2370b928227f24803c34c8df2f736c146e26d2d193a07055ed",
+      "5-3-exit-codes": "d11d3e68a6f47ca0999d24e24359b971b9b67bb6704d4ba83522d04b3b4abc4e",
+      "5-cli-contract": "68a206e87745bf4669d5f81ddec8ff7543be29346f3b8e85a23a6c2eb0ec0e79",
+      "6-deprecation-decision": "b2b9e8696d79350c0c993ee993abfde19ce338fa1b95125a692e2d4b1bc099c2",
+      "7-room-for-later-steps": "13af4e077c1ab9707a5c285b570eb344b2b6188aa2ebdbf71d29287cf9c201b0",
+      "8-functional-requirements-and-acceptance": "797c68bbee75c27c9b4f69b6782155d33cecf1b26303c3f8edc7817be08e1bca",
+      "9-release-boundary": "aa4de461dc29f0ade8627523065fe8e11def7e9146f698724bd87c34f51cb386"
+    },
+    "sectionHeadings": [
+      "002: Pinned trust roots for anchor verification",
+      "1. Purpose",
+      "2. Scope, compatibility, and claimed units",
+      "3. The trust-root set",
+      "3.1 Wire shape",
+      "3.2 Key id",
+      "3.3 Validity and canonical form",
+      "3.4 Canonical bytes and digest",
+      "3.5 Errors",
+      "4. Root-pinned verification",
+      "4.1 Functions",
+      "4.2 Order of checks",
+      "4.3 Strict Ed25519 only",
+      "5. CLI contract",
+      "5.1 Root-pinned verification",
+      "5.2 Without roots",
+      "5.3 Exit codes",
+      "6. Deprecation decision",
+      "7. Room for later steps",
+      "8. Functional requirements and acceptance",
+      "9. Release boundary"
+    ],
+    "specPath": "specs/002-pinned-trust-roots/spec.md",
+    "status": "draft",
+    "summary": "The released anchor verifier checks a chain anchor's Ed25519 signature against the public key the anchor itself carries, so anyone can mint a self-consistent chain. That proves integrity, not authorship. Add a pinned trust-root input: a canonical, digestible set of accepted Ed25519 keys, each with a key id derived from its bytes and an optional chain-id scope, and root-pinned variants of the anchor, anchor-chain and head verifiers that pass only when the anchor's key is pinned, in scope, and produced a signature that verifies under strict Ed25519 rules. Add the matching CLI input and exit code. Existing APIs, hashes, signatures, head commitments and CLI stdout and exit codes are unchanged. Release as an additive 0.2.0.\n",
+    "title": "Pinned trust roots for anchor verification"
+  },
+  "shardHash": "9960f917e43e6e0f9cf960d51d3f453037a3d8552872c5f5fe0ae433ba475ebf",
+  "specVersion": "1.9.0"
+}

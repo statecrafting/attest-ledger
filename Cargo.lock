@@ -54,18 +54,19 @@ dependencies = [
 
 [[package]]
 name = "attest-ledger-cli"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "attest-ledger-core",
  "attest-ledger-types",
  "clap",
+ "ed25519-dalek",
  "serde",
  "serde_json",
 ]
 
 [[package]]
 name = "attest-ledger-core"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "attest-ledger-types",
  "base64",
@@ -80,7 +81,7 @@ dependencies = [
 
 [[package]]
 name = "attest-ledger-types"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "serde",
  "serde_json",

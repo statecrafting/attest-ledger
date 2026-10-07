@@ -20,7 +20,7 @@ resolver = "2"
 members = ["crates/types", "crates/core", "crates/cli"]
 
 [workspace.package]
-version = "0.1.1"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.85"
 license = "Apache-2.0"
@@ -30,8 +30,8 @@ authors = ["The attest-ledger Authors"]
 
 [workspace.dependencies]
 # Internal (path for local build, version for `cargo publish`).
-attest-ledger-types = { version = "0.1.1", path = "crates/types" }
-attest-ledger-core = { version = "0.1.1", path = "crates/core" }
+attest-ledger-types = { version = "0.2.0", path = "crates/types" }
+attest-ledger-core = { version = "0.2.0", path = "crates/core" }
 
 # The leaf: deterministic key-sorted JSON so record hashes are reproducible.
 canonical-keysort-json = "0.1"

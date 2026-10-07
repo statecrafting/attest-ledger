@@ -4,6 +4,33 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - Unreleased
+
+### Added
+
+- Pinned trust roots (spec 002). `TrustRootsV1` lists the Ed25519 keys a
+  verifier accepts, each with a domain-separated SHA-256 key id and an
+  optional chain-id scope, in one canonical form with a `sha256:` digest.
+  `build_trust_roots`, `validate_trust_roots`, `trust_root_key_id`,
+  `trust_roots_canonical_bytes` and `trust_roots_digest` construct and pin it.
+- `verify_anchor_with_roots`, `verify_chain_with_anchor_and_roots` and
+  `verify_chain_with_head_and_roots` authenticate the anchor's signer against
+  the pinned roots with strict Ed25519 verification and return the typed
+  `RootVerifyError` (unsigned, malformed, unknown key, out-of-scope key, bad
+  signature, and wrapped chain or head failures).
+- CLI `verify --roots <FILE>`, `--roots-digest <DIGEST>` and
+  `--require-roots`, with exit 3 for an intact chain whose signer the roots do
+  not authorise.
+
+### Changed
+
+- `verify_anchor` and `verify_chain_with_anchor` are documented as
+  self-attesting: they prove integrity, not who signed the anchor. Their
+  behaviour is unchanged, and they are not deprecated.
+- `verify` with `--anchor` and without `--roots` writes a note to stderr that
+  the anchor was verified against its embedded key only. Its stdout and exit
+  code are unchanged.
+
 ## [0.1.1] - 2026-09-26
 
 ### Added

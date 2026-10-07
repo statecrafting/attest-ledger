@@ -1,10 +1,8 @@
 {
   "mapping": {
-    "amends": [
-      "000-attest-ledger-bootstrap"
-    ],
     "dependsOn": [
-      "000-attest-ledger-bootstrap"
+      "000-attest-ledger-bootstrap",
+      "001-tail-completeness-and-head-commitment"
     ],
     "implementingPaths": [
       {
@@ -32,19 +30,7 @@
         "source": "spec-edge"
       },
       {
-        "path": "crates/cli/tests/head_commitment_cli.rs",
-        "source": "spec-edge"
-      },
-      {
-        "path": "crates/core/Cargo.toml",
-        "source": "spec-edge"
-      },
-      {
-        "path": "crates/core/src/audit.rs",
-        "source": "spec-edge"
-      },
-      {
-        "path": "crates/core/src/head_commitment.rs",
+        "path": "crates/cli/tests/trust_roots_cli.rs",
         "source": "spec-edge"
       },
       {
@@ -56,15 +42,11 @@
         "source": "spec-edge"
       },
       {
-        "path": "crates/core/tests/head_commitment.rs",
+        "path": "crates/core/src/signing.rs",
         "source": "spec-edge"
       },
       {
-        "path": "crates/types/Cargo.toml",
-        "source": "spec-edge"
-      },
-      {
-        "path": "crates/types/src/head_commitment.rs",
+        "path": "crates/core/src/trust_roots.rs",
         "source": "spec-edge"
       },
       {
@@ -72,11 +54,11 @@
         "source": "spec-edge"
       },
       {
-        "path": "tests/registry-consumer/Cargo.toml",
+        "path": "crates/types/src/trust_roots.rs",
         "source": "spec-edge"
       },
       {
-        "path": "tests/registry-consumer/src/main.rs",
+        "path": "spec-spine.toml",
         "source": "spec-edge"
       }
     ],
@@ -84,79 +66,74 @@
       {
         "locations": [
           {
-            "file": "crates/cli/tests/head_commitment_cli.rs"
+            "file": "crates/cli/tests/trust_roots_cli.rs"
           }
         ],
         "ownership": true,
         "sourceField": "establishes",
         "unit": {
           "kind": "file",
-          "path": "crates/cli/tests/head_commitment_cli.rs"
+          "path": "crates/cli/tests/trust_roots_cli.rs"
         }
       },
       {
         "locations": [
           {
-            "file": "crates/core/src/head_commitment.rs"
+            "file": "crates/core/src/trust_roots.rs"
           }
         ],
         "ownership": true,
         "sourceField": "establishes",
         "unit": {
           "kind": "file",
-          "path": "crates/core/src/head_commitment.rs"
+          "path": "crates/core/src/trust_roots.rs"
         }
       },
       {
         "locations": [
           {
-            "file": "crates/core/tests/head_commitment.rs"
+            "file": "crates/types/src/trust_roots.rs"
           }
         ],
         "ownership": true,
         "sourceField": "establishes",
         "unit": {
           "kind": "file",
-          "path": "crates/core/tests/head_commitment.rs"
+          "path": "crates/types/src/trust_roots.rs"
         }
       },
       {
         "locations": [
           {
-            "file": "crates/types/src/head_commitment.rs"
+            "file": "crates/core/src/trust_roots.rs",
+            "span": {
+              "endLine": 213,
+              "startLine": 163
+            }
           }
         ],
         "ownership": true,
         "sourceField": "establishes",
         "unit": {
-          "kind": "file",
-          "path": "crates/types/src/head_commitment.rs"
+          "id": "attest_ledger_core::trust_roots::verify_anchor_with_roots",
+          "kind": "symbol"
         }
       },
       {
         "locations": [
           {
-            "file": "tests/registry-consumer/Cargo.toml"
+            "file": "crates/types/src/trust_roots.rs",
+            "span": {
+              "endLine": 29,
+              "startLine": 26
+            }
           }
         ],
         "ownership": true,
         "sourceField": "establishes",
         "unit": {
-          "kind": "file",
-          "path": "tests/registry-consumer/Cargo.toml"
-        }
-      },
-      {
-        "locations": [
-          {
-            "file": "tests/registry-consumer/src/main.rs"
-          }
-        ],
-        "ownership": true,
-        "sourceField": "establishes",
-        "unit": {
-          "kind": "file",
-          "path": "tests/registry-consumer/src/main.rs"
+          "id": "attest_ledger_types::trust_roots::TrustRootsV1",
+          "kind": "symbol"
         }
       },
       {
@@ -227,32 +204,6 @@
       {
         "locations": [
           {
-            "file": "crates/core/Cargo.toml"
-          }
-        ],
-        "ownership": true,
-        "sourceField": "extends",
-        "unit": {
-          "kind": "file",
-          "path": "crates/core/Cargo.toml"
-        }
-      },
-      {
-        "locations": [
-          {
-            "file": "crates/core/src/audit.rs"
-          }
-        ],
-        "ownership": true,
-        "sourceField": "extends",
-        "unit": {
-          "kind": "file",
-          "path": "crates/core/src/audit.rs"
-        }
-      },
-      {
-        "locations": [
-          {
             "file": "crates/core/src/lib.rs"
           }
         ],
@@ -279,14 +230,14 @@
       {
         "locations": [
           {
-            "file": "crates/types/Cargo.toml"
+            "file": "crates/core/src/signing.rs"
           }
         ],
         "ownership": true,
         "sourceField": "extends",
         "unit": {
           "kind": "file",
-          "path": "crates/types/Cargo.toml"
+          "path": "crates/core/src/signing.rs"
         }
       },
       {
@@ -300,6 +251,19 @@
         "unit": {
           "kind": "file",
           "path": "crates/types/src/lib.rs"
+        }
+      },
+      {
+        "locations": [
+          {
+            "file": "spec-spine.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "extends",
+        "unit": {
+          "kind": "file",
+          "path": "spec-spine.toml"
         }
       },
       {
@@ -341,32 +305,6 @@
       {
         "locations": [
           {
-            "file": ".github/publish-crate.sh"
-          }
-        ],
-        "ownership": false,
-        "sourceField": "references",
-        "unit": {
-          "kind": "file",
-          "path": ".github/publish-crate.sh"
-        }
-      },
-      {
-        "locations": [
-          {
-            "file": ".github/workflows/ci.yml"
-          }
-        ],
-        "ownership": false,
-        "sourceField": "references",
-        "unit": {
-          "kind": "file",
-          "path": ".github/workflows/ci.yml"
-        }
-      },
-      {
-        "locations": [
-          {
             "file": ".github/workflows/release.yml"
           }
         ],
@@ -378,9 +316,9 @@
         }
       }
     ],
-    "specId": "001-tail-completeness-and-head-commitment",
-    "specStatus": "approved"
+    "specId": "002-pinned-trust-roots",
+    "specStatus": "draft"
   },
   "schemaVersion": "1.2.0",
-  "shardHash": "2e681d7ed9d65ae71b3bed2ecc9602a13a73505eb79539edb10aedbd07b47812"
+  "shardHash": "d2556c5a18cdd0842f19e8f1245f68c35bc676a469d79d6d501fb2c8a46ef98f"
 }

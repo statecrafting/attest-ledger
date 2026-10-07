@@ -55,6 +55,7 @@ unwitnessed_allowed = [
   "README.md",
   "crates/cli/src/main.rs",
   "crates/cli/tests/head_commitment_cli.rs",
+  "crates/cli/tests/trust_roots_cli.rs",
   "crates/core/src/audit.rs",
   "crates/core/src/head_commitment.rs",
   "crates/core/src/lib.rs",

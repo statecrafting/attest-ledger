@@ -12,7 +12,7 @@ use serde::Serialize;
 use serde_json::json;
 
 const ROOT: &str = "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc";
-const NOTE: &str = "note: the anchor was verified against its embedded key only (integrity, not authenticity); pass --roots to authenticate its signer\n";
+const NOTE: &str = "note: integrity only (the anchor was verified against its embedded key, not authenticated); pass --roots to authenticate its signer\n";
 static NEXT_TEMP: AtomicU64 = AtomicU64::new(0);
 
 struct TestDir(PathBuf);
@@ -104,6 +104,22 @@ fn without_roots_stdout_and_exit_are_unchanged_and_a_note_says_embedded_key_only
     assert_eq!(
         text(&output.stdout),
         "chain VERIFIED: 2 record(s), anchor signature valid, integrity only (no trusted head supplied)\n"
+    );
+    assert_eq!(text(&output.stderr), NOTE);
+}
+
+#[test]
+fn without_roots_a_trusted_head_keeps_stdout_and_still_labels_integrity_only() {
+    let dir = TestDir::new();
+    let (anchor, records) = fixture(&dir, &key(1));
+    let head = build_record_head_commitment(&anchor, &records).unwrap();
+    write_json(&dir.path("head.json"), &head);
+    let head_path = dir.path("head.json");
+    let output = verify(&dir, &["--head", &head_path, "--require-head"]);
+    assert_eq!(output.status.code(), Some(0));
+    assert_eq!(
+        text(&output.stdout),
+        "chain VERIFIED: 2 record(s), anchor signature valid, trusted head matched\n"
     );
     assert_eq!(text(&output.stderr), NOTE);
 }

@@ -313,10 +313,11 @@ fails the embedded-key verifier and therefore exits 1.
 ### 5.2 Without roots
 
 Without `--roots`, `verify` keeps its 0.1.1 stdout and exit codes. When
-`--anchor` is supplied and the chain verifies, it also writes to stderr:
+`--anchor` is supplied and the chain verifies, it also writes to stderr the
+"integrity only" label the verifier trust policy (section 10) requires:
 
 ```text
-note: the anchor was verified against its embedded key only (integrity, not authenticity); pass --roots to authenticate its signer
+note: integrity only (the anchor was verified against its embedded key, not authenticated); pass --roots to authenticate its signer
 ```
 
 ### 5.3 Exit codes
@@ -417,7 +418,7 @@ Documentation labels them "integrity only".
 
 ## 11. Decision entries
 
-### 2026-10-10: "integrity only" output label conflicts with section 5 (open)
+### 2026-10-10: "integrity only" output label conflicts with section 5 (resolved)
 
 The 2026-10-10 policy requires the self-attesting verifiers to be labelled
 "integrity only" in output as well as in docs. The approved CLI contract does
@@ -427,8 +428,8 @@ not allow that label in every self-attesting path without a requirement change:
   `chain VERIFIED: <n> record(s), anchor signature valid, trusted head matched`.
   Section 2 freezes 0.1.1 stdout for this invocation, so "integrity only"
   cannot be added there.
-- The stderr note for that path and for `--anchor` alone is fixed verbatim in
-  section 5.2 and reads "(integrity, not authenticity)", not "integrity only".
+- The stderr note for that path and for `--anchor` alone was fixed verbatim in
+  section 5.2 and read "(integrity, not authenticity)", not "integrity only".
 - `verify --anchor <A>` without `--head` already prints "integrity only", but
   as the no-trusted-head tail, not as a label on the anchor check.
 
@@ -441,4 +442,9 @@ Options for the owner:
 3. Amend section 2 to allow a stdout change in the self-attesting paths, which
    breaks the 0.1.1 stdout guarantee for existing callers.
 
-Until the owner chooses, the 0.2.0 release (section 9) is held.
+Resolution, 2026-10-10: the owner chose option 2. Section 5.2 now fixes the
+note as `note: integrity only (the anchor was verified against its embedded
+key, not authenticated); pass --roots to authenticate its signer`. Stdout and
+exit codes are unchanged, as section 2 requires. The CLI tests pin the note
+for `--anchor` alone and for `--anchor` with `--head`. The 0.2.0 release hold
+is lifted; the release follows section 9.

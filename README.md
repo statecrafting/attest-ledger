@@ -127,7 +127,7 @@ audit segment VERIFIED: 8 record(s), trusted head matched
 
 | Exit | Meaning |
 |---|---|
-| 0 | Verified. With `--roots`, the anchor's signer is authenticated. Without it, a signed anchor was checked against its embedded key only, and stderr says so. |
+| 0 | Verified. With `--roots`, the anchor's signer is authenticated. Without it, a signed anchor was checked against its embedded key only, and stderr labels the result "integrity only". |
 | 1 | Invalid: a broken record, head mismatch, bad signature, invalid root set, digest mismatch, unreadable input, or a missing required input. |
 | 2 | Command-line syntax error. |
 | 3 | `--roots` only: the chain is intact under the anchor's embedded key, but the roots do not authorise that key (unsigned is exit 1). |

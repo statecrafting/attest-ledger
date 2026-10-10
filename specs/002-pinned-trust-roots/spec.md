@@ -399,3 +399,46 @@ make code
 This spec does not authorize a tag, a GitHub release or a crates.io
 publication. Publication of 0.2.0 needs a separate owner instruction after
 ratification and merge, following the release sequence in spec 001 section 9.
+
+## 10. Verifier trust policy (2026-10-10)
+
+Adopted by the owner on 2026-10-10. This section records deployment policy;
+it changes no requirement in sections 1 to 9.
+
+Pinned trust roots are required wherever the verifier is not the signer:
+receipts verified by another party, exported or backed-up chains, and anything
+that crosses a repository or tenant boundary. Those callers use the
+root-pinned verifiers in section 4, or `verify --roots` in section 5.1, and
+treat only exit 0 as success.
+
+The self-attesting `verify_anchor` and `verify_chain_with_anchor` (and, per
+section 6, `verify_chain_with_head`) stay supported for local integrity only.
+Documentation labels them "integrity only".
+
+## 11. Decision entries
+
+### 2026-10-10: "integrity only" output label conflicts with section 5 (open)
+
+The 2026-10-10 policy requires the self-attesting verifiers to be labelled
+"integrity only" in output as well as in docs. The approved CLI contract does
+not allow that label in every self-attesting path without a requirement change:
+
+- `verify --anchor <A> --head <H>` without `--roots` prints
+  `chain VERIFIED: <n> record(s), anchor signature valid, trusted head matched`.
+  Section 2 freezes 0.1.1 stdout for this invocation, so "integrity only"
+  cannot be added there.
+- The stderr note for that path and for `--anchor` alone is fixed verbatim in
+  section 5.2 and reads "(integrity, not authenticity)", not "integrity only".
+- `verify --anchor <A>` without `--head` already prints "integrity only", but
+  as the no-trusted-head tail, not as a label on the anchor check.
+
+Options for the owner:
+
+1. Accept the section 5.2 stderr note as the output label, and release 0.2.0
+   with the contract unchanged.
+2. Amend section 5.2 so the note reads "integrity only" (stderr only; stdout
+   and exit codes stay as section 2 requires), implement it, and release.
+3. Amend section 2 to allow a stdout change in the self-attesting paths, which
+   breaks the 0.1.1 stdout guarantee for existing callers.
+
+Until the owner chooses, the 0.2.0 release (section 9) is held.

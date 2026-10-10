@@ -155,7 +155,7 @@ struct RootsArgs<'a> {
     required: bool,
 }
 
-const EMBEDDED_KEY_NOTE: &str = "note: the anchor was verified against its embedded key only (integrity, not authenticity); pass --roots to authenticate its signer";
+const EMBEDDED_KEY_NOTE: &str = "note: integrity only (the anchor was verified against its embedded key, not authenticated); pass --roots to authenticate its signer";
 
 fn run_verify(
     chain: &Path,

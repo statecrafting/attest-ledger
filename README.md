@@ -79,6 +79,24 @@ verify_chain_with_head(&anchor, &[r0], &head).unwrap();
   not a freshness authority, so attest-ledger does not claim rollback
   resistance for that arrangement.
 
+## When pinned roots are required
+
+Use pinned trust roots wherever the verifier is not the signer:
+
+- receipts or chains verified by a party other than the one that signed them;
+- exported or backed-up chains, verified after they leave the producer;
+- anything that crosses a repository or tenant boundary.
+
+In those cases call `verify_anchor_with_roots`,
+`verify_chain_with_anchor_and_roots` or `verify_chain_with_head_and_roots`, or
+run the CLI with `--roots` (and `--roots-digest`, `--require-roots`), and treat
+only exit 0 as success.
+
+`verify_anchor`, `verify_chain_with_anchor` and `verify_chain_with_head` stay
+supported, but they are **integrity only**: they check the anchor against the
+key it carries, so they suit a producer checking its own local chain, and
+nothing else. They do not establish who signed the chain.
+
 ## Crates
 
 | Crate | What it is |

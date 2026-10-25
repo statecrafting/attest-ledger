@@ -201,5 +201,5 @@
     "title": "Pinned trust roots for anchor verification"
   },
   "shardHash": "929b1721d09c6ee99fa870fecb940f1c5e6d6d187c3f546364b8571c426fd9e5",
-  "specVersion": "1.9.0"
+  "specVersion": "1.10.0"
 }

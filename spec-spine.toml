@@ -1,5 +1,5 @@
 [meta]
-required_version = "=0.28.0"
+required_version = "=0.31.0"
 
 # spec-spine governing the attest-ledger repository (dogfood).
 #

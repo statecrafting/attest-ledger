@@ -151,3 +151,29 @@ The corrected constitution template is an authored customization. Its
 per-path managed-to-user ownership transfer is recorded by the Statecraft
 CLI with owner-delegated consent; its bytes are preserved, and init apply
 never silently overwrites that corrected amendment guidance.
+
+## Managed governance refresh (2026-10-25)
+
+The owner directed the Statecraft profile revision 20 and spec-spine 0.31.0
+fleet rollout. This amendment adopts revision 20, rendered by statecraft-cli
+`21ee6bc`, and moves the exact spec-spine pin to =0.31.0 in the same change,
+because revision 20 withholds the whole profile while the pin does not admit
+its linked producer (spec-spine-core 0.31.0). It adds a required preflight
+job, job-level concurrency, failure summaries, the AI review stall watchdog
+and the rendered remote desired-state document. It preserves the actual Rust
+code checks, all current governance parameters, and protected owner review.
+The revision-14 refresh above remains the historical record. The
+user-transferred constitution template stays preserved.
+
+## Managed governance refresh (2026-10-28)
+
+Before the revision-20 refresh above merged, the owner moved the rollout to
+Statecraft profile revision 21 (renderer identity 29183723d833, plan
+bcd368c9de2a2107a0074a645022ae5d0fcb434c692858e9cc6ac86fc2fd9c7f), rendered
+by statecraft-cli `167a02f3ce69472c029bdd64d0bcd04421e3df75`. This amendment
+adopts revision 21 in the same change; the linked producer is still
+spec-spine-core 0.31.0, so the exact =0.31.0 pin is unchanged. Revision 21
+additionally publishes each AI review verdict as a `statecraft-ai-review`
+check run. All governance parameters, the actual Rust code checks, protected
+owner review, the adopted spec-spine.toml and the user-transferred
+constitution template are preserved.

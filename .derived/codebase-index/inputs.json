@@ -1,7 +1,7 @@
 {
   "inputs": {
     ".github/CODEOWNERS": {
-      "contentHash": "50c797ff1e8ca10a06805f869aa8896937e1b39ab92d81fbff7cb6b68caa3c35"
+      "contentHash": "857e8a9e9a2fb4e615926444fb94e62e8cafcfe4f41b27235ef51557ec6b7bf4"
     },
     ".github/workflows/ci.yml": {
       "contentHash": "03079c822410b237a3b53da2e8e7b0ae24f7481339c4ecf347f6a69c7e136b48"
@@ -10,40 +10,40 @@
       "contentHash": "799db2441110a36a48f71d3a1fd7ac6e756fd28f7ae1eed678ab8573980d4085"
     },
     ".github/workflows/statecraft-ai-review.yml": {
-      "contentHash": "cd73dc1e84948114345d9b50c517d7172053d66e49eaa8c6872ccb11fc0bf57a"
+      "contentHash": "35676b9f4c20fe495fbdf4ef5a2a7944503d2002af96c92da34e0b7a1f2e4150"
     },
     ".github/workflows/statecraft-ci.yml": {
-      "contentHash": "fb89b720c96466faf4cce5d71b6f3ed36c9620cce45b4dce382e168d0513436c"
+      "contentHash": "5e86935095cbc9b1a3be01d2f4e40e01af0a32ca805f195340ab62a8bebe2a78"
     },
     ".statecraft/AGENTS.md": {
       "contentHash": "c6543d237a50d94a81935ccdcfc6fc15a162b30f133d7d251c4777ab8ad0f4d2"
     },
     ".statecraft/environment.json": {
-      "contentHash": "3c35ec3c1d545eda43ee82474348a1f7b003bd9413c705b235214079f8871c77"
+      "contentHash": "a08a59dc696b7770bddd0a7d859c538c1d257be59851665af53a86c84270852c"
     },
     ".statecraft/setup/github-actions-rust.json": {
-      "contentHash": "b71d8645f870bda43219eea68e3dbe76afbf0275fab3dbfb5518762b20fb030a"
+      "contentHash": "42ad827bbd53d8778989dc71097bbabb46a24d9635277fd6e7ea26733a60f8e6"
     },
     "AGENTS.md": {
       "contentHash": "ffd92e17af94ee0235099c078c89ea63ed6cb468d0eb656d25b5314a1272fed6"
     },
     "Makefile": {
-      "contentHash": "c730ce2c50814c6df097363f3dcf336a2c8dc7bac0bf5e670f255e2cc5f2881a"
+      "contentHash": "44db3109204848a59ffaf8423ee672d7c258d26878de46dce38cf75ad9af0287"
     },
     "scripts/statecraft/ai-review.sh": {
-      "contentHash": "431f7224dd1d5b6cc4cb99d7369787c59c5cf1dbd7a9e9eeae1b527ebb67cbc7"
+      "contentHash": "2a76067ca818c15b393fe15208e4d1743ce55acda99af575c28734b415b12976"
     },
     "scripts/statecraft/ci-gate.sh": {
-      "contentHash": "a0ede496b1eced4ea12680baee33dce8dbba636193cfcfd0f36e765693488d53"
+      "contentHash": "89c1b0612b3140f79dfec4a174b96111f14fd040f2b054c693f9f8007a1c92d5"
     },
     "scripts/statecraft/gate.sh": {
-      "contentHash": "ecbbb9b191e96bf4cff40f40b785135155b86d87dff7ccf6ccf5b5e02d44cf77"
+      "contentHash": "ff0fff6e7d6f7eebc5fbd7e2f6650a938d86ae2255b1425c83e7e2b5016d4082"
     },
     "scripts/statecraft/install-spec-spine.sh": {
-      "contentHash": "73a9d668559cfb8e3c9ab8e7fc9e27f513e3053056fb5643deb1e216efd8990c"
+      "contentHash": "87dd98d56ec17251d0cb2ed1152d3b63f816e6e8ae0a9d4df3e7325bc950bbaa"
     },
     "spec-spine.toml": {
-      "contentHash": "cb3057cc3b794834fa6920cf94036536d3d0b783fcb3e09cc602e479423a56f7"
+      "contentHash": "78d7e61151f18d4f2fc01a74d712689986f06631591c0a51f876916e11e670b3"
     },
     "standards/spec/constitution.md": {
       "contentHash": "37d859bf3541d42bf72cf79cb2bd46825b1c9968ea70e60866fdd87f8e609342"
@@ -58,5 +58,5 @@
       "contentHash": "ff016dd58ed2e6e59fed062a49961c76496b37a7a60d1f321af75b76574eef4f"
     }
   },
-  "schemaVersion": "1.2.0"
+  "schemaVersion": "1.3.0"
 }

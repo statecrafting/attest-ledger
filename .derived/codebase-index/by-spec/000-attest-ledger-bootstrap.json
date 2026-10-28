@@ -368,6 +368,6 @@
     "specId": "000-attest-ledger-bootstrap",
     "specStatus": "approved"
   },
-  "schemaVersion": "1.2.0",
-  "shardHash": "eab5f3105a98e1d0d067db1da8995ea8c1b9411c2ca7320e919662d0847aab17"
+  "schemaVersion": "1.3.0",
+  "shardHash": "70f144b1382919deeca4fd9dd5dc3665601e489f6fe1447a0e5bd7e851b254ba"
 }

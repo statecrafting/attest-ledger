@@ -103,14 +103,16 @@
     ],
     "risk": "low",
     "sectionDigests": {
-      "000-attest-ledger-bootstrap": "e8d573d29f62e67ea7c0cd7ed31eb144eb0bf671347b323edb8e4016432e079a",
+      "000-attest-ledger-bootstrap": "6dea6de6da8bd4e39ed5ca1686c51320347777bb0885c061394b42a96caaa77b",
       "1-purpose": "6606396ef1ee9a69bf4c7b759b8dc9443e5d49a8f8f36ddf8d949e351f3b2386",
       "2-scope": "b0840ff73c6dfcb143a91849e4579ad5466986089857061226ebdb703b4ea530",
       "3-provenance": "7c14234ea31e2e3888e086cc97146716313aa8aa385cb1c7a31ef60e90993edf",
       "4-established-units": "280b45882d35772626f13580af607a94436648a276e52dbe4d685c479567ecf6",
       "5-notes-on-the-generalization": "3abe1ecbcad0865fe97dc2878677ecaae3090f7f3d3f000b1388980e8ba9d83b",
       "managed-governance-enrollment-2026-10-02": "c7a09b36631328488ae8e86823f224590c9ae6907bca4c0300b8dfbee3100704",
-      "managed-governance-refresh-2026-10-02": "74b59a1f85cb11979a4ca721b87b652f924fd18b19abe704f95137ec16530afc",
+      "managed-governance-refresh-2026-10-02": "c2822c01e8f4b37063689b9efe6ec63367d5a9270a721237985eb821228a6fed",
+      "managed-governance-refresh-2026-10-25": "969aeaf45291d578e7da07adc6ae11ea9b141a6d8f82970550e7377ea8a153a9",
+      "managed-governance-refresh-2026-10-28": "9e899e5ee7ccf6e00ceac1e21932fe047dfc832680f0aa9c527b90b6722a376d",
       "owner-ratification": "bdb406bda8f9d0b6d42078aa2f2c0632aea510ae90f04b574b17c2d39f2a22dc"
     },
     "sectionHeadings": [
@@ -122,13 +124,15 @@
       "5. Notes on the generalization",
       "Owner ratification",
       "Managed governance enrollment (2026-10-02)",
-      "Managed governance refresh (2026-10-02)"
+      "Managed governance refresh (2026-10-02)",
+      "Managed governance refresh (2026-10-25)",
+      "Managed governance refresh (2026-10-28)"
     ],
     "specPath": "specs/000-attest-ledger-bootstrap/spec.md",
     "status": "approved",
     "summary": "Bootstrap spec for the attest-ledger repository: a three-crate workspace vending a tamper-evident record ledger (append-only, hash-linked, Ed25519-signed) with an independent verifier. Extracted (relicensed Apache-2.0 by the sole copyright holder) from the Open Agentic Platform's crates/policy-kernel (proof_chain.rs and the pure subset of audit.rs). It depends on canonical-keysort-json for reproducible hashing. This spec establishes the workspace skeleton and seeds this repo's own spec corpus, which is governed by the pinned spec-spine library.\n",
     "title": "attest-ledger bootstrap (tamper-evident record ledger)"
   },
-  "shardHash": "eab5f3105a98e1d0d067db1da8995ea8c1b9411c2ca7320e919662d0847aab17",
-  "specVersion": "1.9.0"
+  "shardHash": "70f144b1382919deeca4fd9dd5dc3665601e489f6fe1447a0e5bd7e851b254ba",
+  "specVersion": "1.10.0"
 }

@@ -20,6 +20,7 @@ depends_on: []
 establishes:
   - { kind: directory, path: "standards/spec/" }
   - { kind: file, path: "spec-spine.toml" }
+  - { kind: file, path: "deny.toml" }
   - { kind: file, path: "AGENTS.md" }
   - { kind: file, path: "Makefile" }
   - { kind: file, path: ".github/CODEOWNERS" }
@@ -177,3 +178,19 @@ additionally publishes each AI review verdict as a `statecraft-ai-review`
 check run. All governance parameters, the actual Rust code checks, protected
 owner review, the adopted spec-spine.toml and the user-transferred
 constitution template are preserved.
+
+## Revision 29 prerequisites: spec-spine 0.32.0 and deny.toml (2026-11-26)
+
+The owner directed on 2026-11-26 that every Statecraft-governed repository
+adopt Statecraft profile revision 29, rendered by statecraft-cli
+`68832a2a97b9b53151a1f2e365a13ef65a5a6d39`, which links spec-spine-core
+0.32.0. Its plan withholds the whole profile here for two unmet
+prerequisites: the exact `=0.31.0` pin does not admit the linked producer,
+and revision 22 requires a committed `deny.toml`, which Statecraft never
+writes. Revision 22's policy-isolation guard refuses either beside other
+paths, so this amendment lands them first and alone; the render follows.
+The pin moves to `=0.32.0`. `deny.toml` denies yanked crates, unknown
+registries and git sources, and wildcard registry requirements (a path dependency is exempt, `allow-wildcard-paths`), and allows the
+licenses the dependency graph uses (Apache-2.0, BSD-3-Clause, MIT and
+Unicode-3.0); the lockfile passes it. This spec claims it, and it joins the
+hashed inputs. No managed file changes.

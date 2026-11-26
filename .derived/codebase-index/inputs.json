@@ -30,6 +30,9 @@
     "Makefile": {
       "contentHash": "44db3109204848a59ffaf8423ee672d7c258d26878de46dce38cf75ad9af0287"
     },
+    "deny.toml": {
+      "contentHash": "7a030ec9fd149e0f72a68ae10786442757d6d9e8d2cfe2c606b25ea28b3b4176"
+    },
     "scripts/statecraft/ai-review.sh": {
       "contentHash": "2a76067ca818c15b393fe15208e4d1743ce55acda99af575c28734b415b12976"
     },
@@ -43,7 +46,7 @@
       "contentHash": "87dd98d56ec17251d0cb2ed1152d3b63f816e6e8ae0a9d4df3e7325bc950bbaa"
     },
     "spec-spine.toml": {
-      "contentHash": "78d7e61151f18d4f2fc01a74d712689986f06631591c0a51f876916e11e670b3"
+      "contentHash": "6ce22cd36f5feff9fb411edc4fc2c6d792cc7313d19038264a43441ede037575"
     },
     "standards/spec/constitution.md": {
       "contentHash": "37d859bf3541d42bf72cf79cb2bd46825b1c9968ea70e60866fdd87f8e609342"

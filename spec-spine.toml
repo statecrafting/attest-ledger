@@ -1,5 +1,5 @@
 [meta]
-required_version = "=0.31.0"
+required_version = "=0.32.0"
 
 # spec-spine governing the attest-ledger repository (dogfood).
 #
@@ -32,7 +32,7 @@ standalone_rust_workspaces = []
 standalone_npm_packages    = []
 
 [index]
-extra_hashed_inputs = ["AGENTS.md", "Makefile", "scripts/statecraft/**/*", ".statecraft/AGENTS.md", ".statecraft/environment.json", ".statecraft/setup/github-actions-rust.json", ".github/CODEOWNERS", "standards/**/*", ".github/workflows/**/*"]
+extra_hashed_inputs = ["AGENTS.md", "Makefile", "scripts/statecraft/**/*", ".statecraft/AGENTS.md", ".statecraft/environment.json", ".statecraft/setup/github-actions-rust.json", ".github/CODEOWNERS", "standards/**/*", ".github/workflows/**/*", "deny.toml"]
 resolver_exclusions = ["target", "node_modules", ".derived", "dist", "build"]
 
 [branding]

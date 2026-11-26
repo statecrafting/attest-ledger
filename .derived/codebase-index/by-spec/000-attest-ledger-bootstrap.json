@@ -78,6 +78,10 @@
         "source": "spec-edge"
       },
       {
+        "path": "deny.toml",
+        "source": "spec-edge"
+      },
+      {
         "path": "scripts/statecraft/",
         "source": "spec-edge"
       },
@@ -328,6 +332,19 @@
       {
         "locations": [
           {
+            "file": "deny.toml"
+          }
+        ],
+        "ownership": true,
+        "sourceField": "establishes",
+        "unit": {
+          "kind": "file",
+          "path": "deny.toml"
+        }
+      },
+      {
+        "locations": [
+          {
             "file": "spec-spine.toml"
           }
         ],
@@ -369,5 +386,5 @@
     "specStatus": "approved"
   },
   "schemaVersion": "1.3.0",
-  "shardHash": "70f144b1382919deeca4fd9dd5dc3665601e489f6fe1447a0e5bd7e851b254ba"
+  "shardHash": "cbd7024ad7dbfcc40746f63aef522a944d80758dd3251e1fdadf2926a609e0b1"
 }

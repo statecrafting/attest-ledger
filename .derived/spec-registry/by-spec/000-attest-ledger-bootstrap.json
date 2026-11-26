@@ -107,7 +107,7 @@
     ],
     "risk": "low",
     "sectionDigests": {
-      "000-attest-ledger-bootstrap": "006cd10ecdfbacdab995e2cf07c5c20f0008998285a28edb52e323dac737d198",
+      "000-attest-ledger-bootstrap": "fc8bfeb4f4189bac7a9cbaadc7bcd486467e312677c22afd48270a6215e33c8d",
       "1-purpose": "6606396ef1ee9a69bf4c7b759b8dc9443e5d49a8f8f36ddf8d949e351f3b2386",
       "2-scope": "b0840ff73c6dfcb143a91849e4579ad5466986089857061226ebdb703b4ea530",
       "3-provenance": "7c14234ea31e2e3888e086cc97146716313aa8aa385cb1c7a31ef60e90993edf",
@@ -118,7 +118,7 @@
       "managed-governance-refresh-2026-10-25": "969aeaf45291d578e7da07adc6ae11ea9b141a6d8f82970550e7377ea8a153a9",
       "managed-governance-refresh-2026-10-28": "feca4a5ef7cc57cb7f7300c16b31d1f85d21e2712f501044720e83fac53a3297",
       "owner-ratification": "bdb406bda8f9d0b6d42078aa2f2c0632aea510ae90f04b574b17c2d39f2a22dc",
-      "revision-29-prerequisites-spec-spine-0-32-0-and-deny-toml-2026-11-26": "aa21ba7e58b4abcfb16ae56cfb5f27effa2df3bcef5dee2ca727e4a5bab34182"
+      "revision-29-prerequisites-spec-spine-0-32-0-and-deny-toml-2026-11-26": "01922afe25440fec09bffe956c5ea0b5c84ca2b1d8d2a177049872e0bd5ad108"
     },
     "sectionHeadings": [
       "000: attest-ledger bootstrap",
@@ -139,6 +139,6 @@
     "summary": "Bootstrap spec for the attest-ledger repository: a three-crate workspace vending a tamper-evident record ledger (append-only, hash-linked, Ed25519-signed) with an independent verifier. Extracted (relicensed Apache-2.0 by the sole copyright holder) from the Open Agentic Platform's crates/policy-kernel (proof_chain.rs and the pure subset of audit.rs). It depends on canonical-keysort-json for reproducible hashing. This spec establishes the workspace skeleton and seeds this repo's own spec corpus, which is governed by the pinned spec-spine library.\n",
     "title": "attest-ledger bootstrap (tamper-evident record ledger)"
   },
-  "shardHash": "4a33b483cce274ef269b4ab35a20787346246dbe0091086389de46488efa9d31",
+  "shardHash": "cbd7024ad7dbfcc40746f63aef522a944d80758dd3251e1fdadf2926a609e0b1",
   "specVersion": "1.11.0"
 }

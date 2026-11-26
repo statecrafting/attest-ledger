@@ -190,7 +190,7 @@ and revision 22 requires a committed `deny.toml`, which Statecraft never
 writes. Revision 22's policy-isolation guard refuses either beside other
 paths, so this amendment lands them first and alone; the render follows.
 The pin moves to `=0.32.0`. `deny.toml` denies yanked crates, unknown
-registries and git sources, and wildcard dependencies, and allows the
+registries and git sources, and wildcard registry requirements (a path dependency is exempt, `allow-wildcard-paths`), and allows the
 licenses the dependency graph uses (Apache-2.0, BSD-3-Clause, MIT and
 Unicode-3.0); the lockfile passes it. This spec claims it, and it joins the
 hashed inputs. No managed file changes.
